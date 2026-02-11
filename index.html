@@ -26,7 +26,7 @@
 
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">FACUNDO OTÓN</h1>
+      <a href="." class="logo">FACUNDO OTÓN</a>
       <nav class="main-nav">
         <a href="#portfolio">Work</a>
         <a href="#about">About</a>
@@ -417,7 +417,19 @@
         if (e.key === 'ArrowRight') navigateGallery(1);
       }
     });
+
+    // Logo Spotlight Effect
+    const logo = document.querySelector('.logo');
+    logo.addEventListener('mousemove', (e) => {
+      const rect = logo.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      logo.style.setProperty('--x', `${x}px`);
+      logo.style.setProperty('--y', `${y}px`);
+    });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="gravity.js"></script>
 </body>
 
 </html>

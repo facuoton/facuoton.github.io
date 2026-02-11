@@ -16,9 +16,9 @@
   --text-accent: #d4af37;
   /* Gold/Bronze */
 
-  --accent-primary: #3b82f6;
-  /* Electric Blue for interactive elements */
-  --accent-glow: rgba(59, 130, 246, 0.5);
+  --accent-primary: #FFD700;
+  /* Striking Yellow / Gold for interactive elements */
+  --accent-glow: rgba(255, 215, 0, 0.5);
 
   --border-light: rgba(255, 255, 255, 0.1);
 
@@ -114,6 +114,8 @@ p {
 }
 
 .logo {
+  font-family: 'Outfit', sans-serif;
+  /* Ensure font matches headings */
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -121,6 +123,18 @@ p {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: all 0.2s ease;
+  display: block;
+  /* Ensure correct spacing/layout as an anchor */
+  text-decoration: none;
+}
+
+.logo:hover {
+  /* Increased spotlight size (120px) and added drop-shadow glow */
+  background-image: radial-gradient(circle 120px at var(--x, 50%) var(--y, 50%), #FFD700 0%, transparent 100%),
+    linear-gradient(to right, #fff, #a0a0a0);
+  transform: scale(1.02);
+  /* Slight scale for "exaggerated" feel */
 }
 
 .main-nav {
