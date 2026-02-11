@@ -1,0 +1,19 @@
+{
+  "name": "Portfolio — Facundo Otón",
+  "short_name": "Facundo Otón",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dp4yphsqr/image/upload/v1770842652/android-chrome-192x192_wlle2n.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://res.cloudinary.com/dp4yphsqr/image/upload/v1770842653/android-chrome-512x512_aiszhs.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#050505",
+  "background_color": "#050505",
+  "display": "standalone"
+}
