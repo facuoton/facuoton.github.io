@@ -13,6 +13,35 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Mobile Triple Tap Trigger
+const heroTitle = document.querySelector('.hero-title');
+if (heroTitle) {
+    let tapCount = 0;
+    let tapTimer = null;
+
+    heroTitle.addEventListener('click', (e) => {
+        tapCount++;
+        console.log('Tap count:', tapCount);
+
+        if (tapTimer) clearTimeout(tapTimer);
+
+        tapTimer = setTimeout(() => {
+            tapCount = 0;
+        }, 500); // 500ms window to tap again
+
+        if (tapCount === 3) {
+            if (sessionStorage.getItem('gravityEnabled') === 'true') {
+                sessionStorage.removeItem('gravityEnabled');
+                window.location.reload();
+            } else {
+                sessionStorage.setItem('gravityEnabled', 'true');
+                initGravity();
+            }
+            tapCount = 0;
+        }
+    });
+}
+
 // Check if we should auto-enable (optional, but for now we stick to toggle behavior as requested: "Al volver a presionar la F se recargue")
 // The user request says "Al volver a presionar la F se recargue la página", implying a reset.
 

@@ -249,6 +249,9 @@ p {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  user-select: none;
+  /* Prevent selection for triple-tap trigger */
+  cursor: default;
 }
 
 .hero-desc {
