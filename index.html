@@ -52,6 +52,11 @@
     </div>
   </header>
 
+  <!-- Logo Hover Preview -->
+  <div id="logo-preview" class="logo-preview">
+    <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837263/photo28_fqo7im.jpg" alt="Preview" draggable="false">
+  </div>
+
   <main>
     <!-- Cinematic Legend Hero with Background Slider -->
     <section id="hero" class="hero">
@@ -435,14 +440,76 @@
       }
     });
 
-    // Logo Spotlight Effect
+    // Logo Spotlight + Hover Preview Effect
     const logo = document.querySelector('.logo');
+    const preview = document.getElementById('logo-preview');
+
+    // Spring state
+    const PREVIEW_W = 140;
+    const PREVIEW_H = 249;
+    const OFFSET_Y = 40;
+
+    let targetX = 0, targetY = 0, targetRotate = 0;
+    let currentX = 0, currentY = 0, currentRotate = 0;
+    let prevMouseX = null;
+    let previewVisible = false;
+    let animFrame = null;
+
+    function springLerp(current, target, stiffness) {
+      return current + (target - current) * stiffness;
+    }
+
+    function animatePreview() {
+      currentX = springLerp(currentX, targetX, 0.15);
+      currentY = springLerp(currentY, targetY, 0.15);
+      currentRotate = springLerp(currentRotate, targetRotate, 0.1);
+
+      preview.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${currentRotate}deg)`;
+
+      // Decay rotation toward 0
+      targetRotate *= 0.92;
+
+      if (previewVisible || Math.abs(currentX - targetX) > 0.1) {
+        animFrame = requestAnimationFrame(animatePreview);
+      }
+    }
+
+    logo.addEventListener('mouseenter', () => {
+      previewVisible = true;
+      prevMouseX = null;
+      preview.classList.add('visible');
+      if (!animFrame) animFrame = requestAnimationFrame(animatePreview);
+    });
+
+    logo.addEventListener('mouseleave', () => {
+      previewVisible = false;
+      prevMouseX = null;
+      targetRotate = 0;
+      preview.classList.remove('visible');
+      if (animFrame) {
+        cancelAnimationFrame(animFrame);
+        animFrame = null;
+      }
+    });
+
     logo.addEventListener('mousemove', (e) => {
+      // Spotlight effect
       const rect = logo.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       logo.style.setProperty('--x', `${x}px`);
       logo.style.setProperty('--y', `${y}px`);
+
+      // Preview position
+      targetX = e.clientX - PREVIEW_W / 2;
+      targetY = e.clientY + OFFSET_Y;
+
+      // Tilt based on horizontal movement
+      if (prevMouseX !== null) {
+        const deltaX = e.clientX - prevMouseX;
+        targetRotate = Math.max(-15, Math.min(15, deltaX * 1.5));
+      }
+      prevMouseX = e.clientX;
     });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
