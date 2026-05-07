@@ -53,9 +53,9 @@
   </header>
 
   <!-- Logo Hover Preview -->
-  <div id="logo-preview" class="logo-preview">
+  <div id="logo-preview" class="logo-preview" style="position:fixed;top:0;left:0;opacity:0;visibility:hidden;pointer-events:none;z-index:9999;">
     <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837263/photo28_fqo7im.jpg" alt="Preview"
-      draggable="false">
+      draggable="false" style="width:140px;height:249px;object-fit:cover;border-radius:12px;">
   </div>
 
   <main>
@@ -478,7 +478,8 @@
     logo.addEventListener('mouseenter', () => {
       previewVisible = true;
       prevMouseX = null;
-      preview.classList.add('visible');
+      preview.style.opacity = '1';
+      preview.style.visibility = 'visible';
       if (!animFrame) animFrame = requestAnimationFrame(animatePreview);
     });
 
@@ -486,7 +487,8 @@
       previewVisible = false;
       prevMouseX = null;
       targetRotate = 0;
-      preview.classList.remove('visible');
+      preview.style.opacity = '0';
+      preview.style.visibility = 'hidden';
       if (animFrame) {
         cancelAnimationFrame(animFrame);
         animFrame = null;
