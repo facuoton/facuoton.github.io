@@ -434,6 +434,11 @@ p {
   margin-bottom: 2rem;
 }
 
+.logo-3d-link:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
 /* Contact Section */
 .contact-section {
   padding: 6rem 0;
@@ -576,7 +581,7 @@ p {
 }
 
 .gallery-nav {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0.5);
@@ -600,11 +605,11 @@ p {
 }
 
 .gallery-nav.prev {
-  left: -70px;
+  left: 40px;
 }
 
 .gallery-nav.next {
-  right: -70px;
+  right: 40px;
 }
 
 /* Responsive */
