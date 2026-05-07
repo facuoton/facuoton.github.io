@@ -207,14 +207,17 @@
         </div>
         <p class="about-text">Soy un diseñador multimedia apasionado por contar historias a través de la imagen y el
           movimiento. Busco siempre la excelencia estética y la innovación técnica.</p>
-        <div class="about-text" style="display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:1.5rem; gap:8px; margin: 2rem 0;">
+        <div class="about-text"
+          style="display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:1.5rem; gap:8px; margin: 2rem 0;">
           <strong>Fundador de</strong>
-          <a href="https://368bis.com" target="_blank" class="logo-3d-link" style="display:flex; justify-content:center; align-items:center; line-height:0; transition: transform 0.2s ease;">
-            <div id="logo-3d-container" style="width:240px; height:120px; display:flex; justify-content:center; align-items:center;"></div>
+          <a href="https://368bis.com" target="_blank" class="logo-3d-link"
+            style="display:flex; justify-content:center; align-items:center; line-height:0; transition: transform 0.2s ease;">
+            <div id="logo-3d-container"
+              style="width:240px; height:120px; display:flex; justify-content:center; align-items:center;"></div>
           </a>
         </div>
         <p class="about-text">Especialidades: <strong>Dirección de Arte, Motion Graphics, Video,
-            Fotografía.</strong></p>
+            Fotografía y Diseño Web.</strong></p>
       </div>
     </section>
 
@@ -524,7 +527,7 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <script src="gravity.js"></script>
-  
+
   <!-- Three.js Setup for 368bis Logo -->
   <script type="importmap">
     {
@@ -541,7 +544,7 @@
     const container = document.getElementById('logo-3d-container');
     if (container) {
       const scene = new THREE.Scene();
-      
+
       const camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 0.1, 1000);
       camera.position.set(0, 0, 7.5);
 
@@ -567,61 +570,61 @@
       scene.add(group);
 
       const material = new THREE.MeshStandardMaterial({
-          color: 0xffffff,
-          roughness: 0.25,
-          metalness: 0.15,
+        color: 0xffffff,
+        roughness: 0.25,
+        metalness: 0.15,
       });
 
       const loader = new SVGLoader();
       loader.load('./logo.svg', (data) => {
-          const geos = [];
-          const tempGroup = new THREE.Group();
+        const geos = [];
+        const tempGroup = new THREE.Group();
 
-          data.paths.forEach((path) => {
-              const shapes = SVGLoader.createShapes(path);
-              shapes.forEach((shape) => {
-                  const geometry = new THREE.ExtrudeGeometry(shape, {
-                      depth: 18,
-                      bevelEnabled: true,
-                      bevelThickness: 1,
-                      bevelSize: 0.5,
-                      bevelSegments: 3,
-                  });
-                  geos.push(geometry);
-                  tempGroup.add(new THREE.Mesh(geometry));
-              });
+        data.paths.forEach((path) => {
+          const shapes = SVGLoader.createShapes(path);
+          shapes.forEach((shape) => {
+            const geometry = new THREE.ExtrudeGeometry(shape, {
+              depth: 18,
+              bevelEnabled: true,
+              bevelThickness: 1,
+              bevelSize: 0.5,
+              bevelSegments: 3,
+            });
+            geos.push(geometry);
+            tempGroup.add(new THREE.Mesh(geometry));
           });
+        });
 
-          tempGroup.updateMatrixWorld(true);
-          const box = new THREE.Box3().setFromObject(tempGroup);
-          const center = new THREE.Vector3();
-          box.getCenter(center);
-          
-          geos.forEach((geo) => {
-              geo.translate(-center.x, -center.y, -center.z);
-              const mesh = new THREE.Mesh(geo, material);
-              group.add(mesh);
-          });
+        tempGroup.updateMatrixWorld(true);
+        const box = new THREE.Box3().setFromObject(tempGroup);
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+
+        geos.forEach((geo) => {
+          geo.translate(-center.x, -center.y, -center.z);
+          const mesh = new THREE.Mesh(geo, material);
+          group.add(mesh);
+        });
       });
 
       const clock = new THREE.Clock();
       function animate() {
-          requestAnimationFrame(animate);
-          
-          const delta = clock.getDelta();
-          const time = clock.getElapsedTime();
+        requestAnimationFrame(animate);
 
-          group.rotation.y -= delta * 1.4;
-          group.position.y = Math.sin(time * 2.0) * 0.15;
+        const delta = clock.getDelta();
+        const time = clock.getElapsedTime();
 
-          renderer.render(scene, camera);
+        group.rotation.y -= delta * 1.4;
+        group.position.y = Math.sin(time * 2.0) * 0.15;
+
+        renderer.render(scene, camera);
       }
       animate();
 
       window.addEventListener('resize', () => {
-          camera.aspect = container.clientWidth / container.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
       });
     }
   </script>
