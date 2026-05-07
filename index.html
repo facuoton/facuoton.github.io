@@ -105,7 +105,22 @@
 
       <div class="container">
         <div class="hero-content">
-          <h2 class="hero-title">VISUAL EXPERIENCE</h2>
+          <div class="hero-gooey-container">
+            <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true" focusable="false">
+              <defs>
+                <filter id="threshold">
+                  <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                                  0 1 0 0 0
+                                  0 0 1 0 0
+                                  0 0 0 255 -140" />
+                </filter>
+              </defs>
+            </svg>
+            <div class="gooey-texts">
+              <h2 id="text1" class="gooey-text"></h2>
+              <h2 id="text2" class="gooey-text"></h2>
+            </div>
+          </div>
           <p class="hero-desc">Diseño multimedia y web, dirección de arte, fotografía y video. Creando narrativas
             visuales que
             impactan.</p>
@@ -524,6 +539,82 @@
       }
       prevMouseX = e.clientX;
     });
+
+    // Gooey Text Morphing Effect
+    const morphTexts = [
+      'THE MOST DANGEROUS',
+      'THING IN LIFE',
+      'IS PLAY IT SAFE',
+      '- CASEY NEISTAT'
+    ];
+    const morphTime = 1.2;
+    const cooldownTime = 1.5;
+
+    let morphTextIndex = morphTexts.length - 1;
+    let morphTimeRef = new Date();
+    let morphValue = 0;
+    let cooldownValue = cooldownTime;
+
+    const text1 = document.getElementById('text1');
+    const text2 = document.getElementById('text2');
+
+    if (text1 && text2) {
+      text1.textContent = morphTexts[morphTextIndex % morphTexts.length];
+      text2.textContent = morphTexts[(morphTextIndex + 1) % morphTexts.length];
+
+      function setMorph(fraction) {
+        text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+        let invFraction = 1 - fraction;
+        text1.style.filter = `blur(${Math.min(8 / invFraction - 8, 100)}px)`;
+        text1.style.opacity = `${Math.pow(invFraction, 0.4) * 100}%`;
+      }
+
+      function doCooldown() {
+        morphValue = 0;
+        text2.style.filter = "";
+        text2.style.opacity = "100%";
+        text1.style.filter = "";
+        text1.style.opacity = "0%";
+      }
+
+      function doMorph() {
+        morphValue -= cooldownValue;
+        cooldownValue = 0;
+        let fraction = morphValue / morphTime;
+
+        if (fraction > 1) {
+          cooldownValue = cooldownTime;
+          fraction = 1;
+        }
+
+        setMorph(fraction);
+      }
+
+      function animateGooey() {
+        requestAnimationFrame(animateGooey);
+        const newTime = new Date();
+        const shouldIncrementIndex = cooldownValue > 0;
+        const dt = (newTime.getTime() - morphTimeRef.getTime()) / 1000;
+        morphTimeRef = newTime;
+
+        cooldownValue -= dt;
+
+        if (cooldownValue <= 0) {
+          if (shouldIncrementIndex) {
+            morphTextIndex = (morphTextIndex + 1) % morphTexts.length;
+            text1.textContent = morphTexts[morphTextIndex % morphTexts.length];
+            text2.textContent = morphTexts[(morphTextIndex + 1) % morphTexts.length];
+          }
+          doMorph();
+        } else {
+          doCooldown();
+        }
+      }
+
+      animateGooey();
+    }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <script src="gravity.js"></script>
