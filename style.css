@@ -396,11 +396,26 @@ p {
   height: 100%;
 }
 
+.project-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+}
+
+.card img.sizematters-project-thumb {
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.14), transparent 48%),
+    #050505;
 }
 
 .card:hover img {
@@ -419,6 +434,12 @@ p {
   transition: all 0.3s ease;
 }
 
+.card-overlay-rich {
+  padding-top: 4.5rem;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.88) 48%, rgba(0, 0, 0, 0.34) 78%, transparent 100%);
+}
+
 .card:hover .card-overlay {
   opacity: 1;
   transform: translateY(0);
@@ -435,6 +456,25 @@ p {
   color: var(--text-accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.card-description {
+  max-width: 34rem;
+  margin-top: 0.65rem;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--text-main);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* About Section */

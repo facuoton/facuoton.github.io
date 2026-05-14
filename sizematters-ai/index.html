@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional camera storage calculator, card rotation simulator, and folder structure generator for film productions. Plan your DIT workflow with precision.">
+    <title>SizeMatters.AI — Pro Camera Storage Calculator</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+
+    <!-- JSZip and FileSaver for ZIP Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: "#1a1a1a",
+                        surface: "#f5f0e8",
+                        "primary-container": "#ffcc00",
+                        secondary: "#e63b2e",
+                        tertiary: "#0055ff"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-surface relative min-h-screen pb-24 overflow-x-hidden">
+
+    <!-- Skip Link (WCAG 2.4.1) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+
+    <main id="main-content" class="max-w-[1600px] mx-auto p-4 md:p-8" role="main">
+
+        <!-- VIEW 0: COMMAND CENTER -->
+        <section id="view-home" class="view-section block h-[calc(100vh-200px)] min-h-[600px] flex items-center justify-center relative overflow-hidden">
+            <a class="home-portfolio-link" href="../" aria-label="Back to portfolio">Back to Portfolio</a>
+            <button class="home-version-badge" type="button" aria-label="Application version. Created by Facundo Oton" data-credit="Created by Facundo Otón">v1.4.3</button>
+            <div class="command-center-wrapper">
+                <div class="center-orb" aria-hidden="true">
+                    <img class="center-home-logo" src="IMG_assets/Logo%20Inflado.png" alt="">
+                </div>
+                <div class="orbit-ring">
+                    <button class="nav-btn satellite glass-card" data-target="view-calculator" style="--sat-idx: 0;">
+                        <img class="sat-icon sat-image sat-image-compact-mobile" src="IMG_assets/Icono%20Calc.png" alt="">
+                        <div class="sat-content">
+                            <span class="sat-title">Storage Calculator</span>
+                            <span class="sat-desc">Estimate total media weight</span>
+                        </div>
+                    </button>
+                    <button class="nav-btn satellite glass-card" data-target="view-cards" style="--sat-idx: 1;">
+                        <img class="sat-icon sat-image sat-image-compact-mobile" src="IMG_assets/Icono%20SD%20Card.png" alt="">
+                        <div class="sat-content">
+                            <span class="sat-title">Card Rotation</span>
+                            <span class="sat-desc">Simulate card swaps and bottlenecks</span>
+                        </div>
+                    </button>
+                    <button class="nav-btn satellite glass-card" data-target="view-structure" style="--sat-idx: 2;">
+                        <img class="sat-icon sat-image" src="IMG_assets/Icono%20Folder.png" alt="">
+                        <div class="sat-content">
+                            <span class="sat-title">Structure Automation</span>
+                            <span class="sat-desc">Generate clean project folders</span>
+                        </div>
+                    </button>
+                    <button class="nav-btn satellite glass-card" data-target="view-report" style="--sat-idx: 3;">
+                        <img class="sat-icon sat-image sat-image-compact-mobile" src="IMG_assets/Icono%20Report.png" alt="">
+                        <div class="sat-content">
+                            <span class="sat-title">Technical Report</span>
+                            <span class="sat-desc">Export a production-ready summary</span>
+                        </div>
+                    </button>
+                    <button class="nav-btn satellite glass-card" data-target="view-producer" style="--sat-idx: 4;">
+                        <img class="sat-icon sat-image" src="IMG_assets/Icono%20Toolbox%20Producer.png" alt="">
+                        <div class="sat-content">
+                            <span class="sat-title">Producer Mode</span>
+                            <span class="sat-desc">Translate storage into cost and risk</span>
+                        </div>
+                    </button>
+                    <button class="nav-btn satellite glass-card" data-target="view-roadmap" style="--sat-idx: 5;">
+                        <img class="sat-icon sat-image" src="IMG_assets/Icono%20AI%20Chip.png" alt="">
+                        <div class="sat-content">
+                            <span class="sat-title">AI Future Beta</span>
+                            <span class="sat-desc">Preview intelligent tools</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <footer class="home-footer-brand" aria-label="Application identity">
+                <button class="home-footer-identity" type="button" aria-label="Play Give Me The Keys">
+                    <img class="home-footer-logo-text" src="IMG_assets/TextoInflado.png" alt="SizeMatters.AI - Production Intelligence Toolkit">
+                </button>
+                <p class="home-footer-copy">Plan storage, cards, offloads and production risk before the shoot.</p>
+            </footer>
+            <audio id="home-keys-audio" preload="auto" src="mp3_assets/GIVE%20ME%20THE%20KEYS%20(NSFW)%20-%20Usual%20Suspects.mp3"></audio>
+        </section>
+
+        <!-- VIEW 1: CALCULATOR CORE -->
+        <section id="view-calculator" class="view-section hidden">
+            <!-- Row 1: Top Context Row (Project & Time Setup) -->
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 mb-8">
+                <!-- Left (8 columns): Project Management Card -->
+                <div class="col-span-1 xl:col-span-8">
+                    <div class="bg-white p-6 neo-border neo-shadow h-full flex flex-col justify-between">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-white/10 pb-3 gap-4">
+                            <h2 class="text-2xl font-display font-bold flex items-center gap-2">
+                                <img class="calc-icon" src="IMG_assets/Icono%20Project%20Setup.png" alt=""> Project Setup
+                            </h2>
+                            <div class="flex items-center gap-2">
+                                <span id="save-status-indicator" class="text-xs font-mono font-bold px-3 py-1 bg-surface neo-border hidden transition-opacity"></span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Project Name</label>
+                                <input type="text" id="meta-project-name" class="neo-input" placeholder="e.g. SizeMatters Commercial">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Production Co. / Client</label>
+                                <input type="text" id="meta-company" class="neo-input" placeholder="e.g. 368 BIS">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Shooting Day</label>
+                                <input type="text" id="meta-shooting-day" class="neo-input" placeholder="e.g. Day 1">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Location</label>
+                                <input type="text" id="meta-location" class="neo-input" placeholder="e.g. Studio A">
+                            </div>
+                            <div class="md:col-span-2 xl:col-span-4">
+                                <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Notes</label>
+                                <textarea id="meta-notes" class="neo-input h-16 resize-none" placeholder="Add technical notes or workflow details..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                            <button id="btn-save-project" class="liquid-btn liquid-btn-primary py-2 px-4 flex items-center gap-2 text-sm">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20Save.png" alt=""> Save
+                            </button>
+                            <button id="btn-load-project" class="liquid-btn py-2 px-4 flex items-center gap-2 text-sm">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20Load%20Last.png" alt=""> Load Last
+                            </button>
+                            <button id="btn-export-project" class="liquid-btn py-2 px-4 flex items-center gap-2 text-sm">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20Export.png" alt=""> Export .JSON
+                            </button>
+                            <label class="liquid-btn py-2 px-4 flex items-center gap-2 text-sm cursor-pointer">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20Import.png" alt=""> Import .JSON
+                                <input type="file" id="btn-import-project" accept=".json" class="hidden">
+                            </label>
+
+                            <div class="flex-grow"></div>
+
+                            <button id="btn-new-project" class="liquid-btn liquid-btn-danger py-2 px-4 flex items-center gap-2 text-sm">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20New.png" alt=""> New
+                            </button>
+                        </div>
+                        <p class="project-save-note text-[10px] mt-3 italic uppercase tracking-wider">Projects are saved locally in this browser.</p>
+                    </div>
+                </div>
+
+                <!-- Right (4 columns): Shooting Duration Card -->
+                <div class="col-span-1 xl:col-span-4">
+                    <div class="bg-white p-6 neo-border neo-shadow flex flex-col items-center justify-center h-full">
+                        <h2 class="text-xl font-display font-bold text-center w-full border-b border-white/10 pb-3 mb-6 flex items-center justify-center gap-2">
+                            <img class="calc-icon" src="IMG_assets/Icono%20Shooting%20Day.png" alt=""> Shooting Duration
+                        </h2>
+
+                        <div class="w-full px-4 mb-8 mt-4">
+                            <input type="range" min="1" max="24" value="1" aria-label="Shooting hours" title="Shooting Hours" class="neo-slider w-full" id="hours-slider">
+                        </div>
+
+                        <div class="text-center w-full pt-4 border-t border-white/10">
+                            <span class="font-display text-5xl font-bold block" id="hours-display" aria-live="polite" role="status">1</span>
+                            <span class="block text-sm font-bold uppercase tracking-wider mt-1 text-primary/70">Hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Main Planning Grid (Cameras & Storage) -->
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 mb-8">
+                <!-- Left (8 columns): Cameras Container -->
+                <div class="col-span-1 xl:col-span-8">
+                    <div id="cameras-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- JS injected cameras -->
+                        <button id="btn-add-camera" class="liquid-btn liquid-btn-primary h-full min-h-[350px] w-full p-6 flex flex-col items-center justify-center gap-4 transition-transform cursor-pointer">
+                            <img class="add-camera-icon" src="IMG_assets/Icono%20Add.png" alt="">
+                            <span class="font-display font-bold text-xl text-center tracking-widest text-white">ADD CAMERA</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right (4 columns): Storage Result -->
+                <div class="col-span-1 xl:col-span-4 xl:sticky xl:top-6 self-start">
+                    <div class="bg-white p-6 neo-border neo-shadow flex flex-col justify-between h-full min-h-[350px]">
+                        <div>
+                            <div class="flex justify-between items-end mb-6 border-b border-white/10 pb-3">
+                                <h2 class="text-2xl font-display font-bold flex items-center gap-2 text-[#00E5FF]">
+                                    <img class="calc-icon calc-icon-glow" src="IMG_assets/Icono%20Storage%20Load.png" alt=""> Storage Load
+                                </h2>
+                            </div>
+
+                            <!-- Drive Recommendation -->
+                            <div class="bg-[rgba(0,229,255,0.05)] p-4 mb-8 border border-[rgba(0,229,255,0.2)] rounded-xl flex items-center gap-4 text-left">
+                                <img class="calc-icon-lg" src="IMG_assets/Icono%20AI%20Chip.png" alt="">
+                                <div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-white/50">Target Media</div>
+                                    <div id="target-drive-label" class="font-display font-bold text-xl leading-tight uppercase text-white">1x 256GB</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto">
+                            <div class="font-display text-5xl lg:text-6xl font-bold text-right mb-6 text-white transition-colors duration-300 drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]" id="tb-display" aria-live="polite" role="status">
+                                0.00 <span class="text-2xl lg:text-3xl text-white/50">GB</span>
+                            </div>
+
+                            <div class="progress-bar-container bg-black/40 border border-white/10 rounded-full h-4 overflow-hidden mb-2" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Storage usage">
+                                <div id="progress-fill" class="progress-bar-fill h-full w-0 bg-gradient-to-r from-[#00E5FF] to-[#0088ff] transition-all duration-500 ease-out shadow-[0_0_10px_rgba(0,229,255,0.5)]"></div>
+                            </div>
+
+                            <div class="flex justify-between text-[10px] lg:text-xs font-bold mt-2 text-white/50 uppercase tracking-widest">
+                                <span>0</span>
+                                <span id="max-drive-label">256GB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3: Lower Technical Row (Logistics) -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <!-- Backup Strategy -->
+                <div class="bg-white p-6 neo-border neo-shadow">
+                    <h2 class="text-xl font-display font-bold mb-6 border-b border-white/10 pb-3 flex items-center gap-2">
+                        <img class="calc-icon" src="IMG_assets/Icono%20BackUp.png" alt=""> Backup Strategy
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Workflow</label>
+                            <select id="backup-strategy-select" class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20stroke%3D%22white%22%20fill%3D%22white%22%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                                <option value="no_backup">No Backup (1x)</option>
+                                <option value="1_copy" selected>1 Backup Copy (2x)</option>
+                                <option value="2_copies">2 Backup Copies (3x)</option>
+                                <option value="3_2_1">3-2-1 Workflow (3x)</option>
+                                <option value="custom">Custom Multiplier</option>
+                            </select>
+                        </div>
+
+                        <div id="custom-multiplier-container" class="hidden">
+                            <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Custom Multiplier (e.g. 1.5)</label>
+                            <input type="number" id="backup-custom-multiplier" class="neo-input" min="1" step="0.1" value="1.5">
+                        </div>
+
+                        <div class="bg-surface/5 p-4 border border-white/10 rounded-xl">
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="block text-[10px] font-bold uppercase tracking-widest text-primary/70 m-0">Safety Margin</label>
+                                <span id="backup-margin-display" class="font-display font-bold text-lg text-[#00E5FF]">20%</span>
+                            </div>
+                            <input type="range" id="backup-safety-margin" class="neo-slider w-full m-0" min="0" max="50" value="20" step="1">
+                        </div>
+                    </div>
+
+                    <!-- Backup Summary -->
+                    <div class="mt-6 pt-4 border-t border-white/10 flex justify-between">
+                        <div class="text-left">
+                            <div class="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Original Media</div>
+                            <div id="backup-summary-original" class="font-mono font-bold text-lg text-white">0.00 GB</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Multiplier</div>
+                            <div id="backup-summary-multiplier" class="font-mono font-bold text-lg text-[#00E5FF]">2.0x</div>
+                        </div>
+                    </div>
+
+                    <!-- Warning / Info Note -->
+                    <div id="backup-warning-container" class="mt-6 p-4 rounded-xl border border-white/10 text-sm font-bold bg-black/20">
+                        <!-- JS injected message -->
+                    </div>
+                </div>
+
+                <!-- DIT Offload Logistics -->
+                <div class="bg-white p-6 neo-border neo-shadow flex flex-col">
+                    <h2 class="text-xl font-display font-bold mb-6 flex items-center gap-2 border-b border-white/10 pb-3">
+                        <img class="calc-icon" src="IMG_assets/Icono%20DIT.png" alt=""> DIT Offload Logistics
+                    </h2>
+                    <div class="grid grid-cols-1 gap-6 flex-grow">
+                        <div>
+                            <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Source Media Speed</label>
+                            <select id="source-media-select" class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20stroke%3D%22white%22%20fill%3D%22white%22%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                                <option value="2000">Codex SXR Capture Drive (2000 MB/s)</option>
+                                <option value="1700">CFexpress Type B (1700 MB/s)</option>
+                                <option value="1000">Codex Compact Drive (1000 MB/s)</option>
+                                <option value="800">CFexpress Type A / RED Mini-Mag (800 MB/s)</option>
+                                <option value="500">SATA SSD / CFast 2.0 (500 MB/s)</option>
+                                <option value="300" selected>SDXC UHS-II (300 MB/s)</option>
+                                <option value="90">SDXC UHS-I (90 MB/s)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Target Drive / Port Speed</label>
+                            <select id="target-drive-select" class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20stroke%3D%22white%22%20fill%3D%22white%22%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                                <option value="2800">Thunderbolt 4 / 3 NVMe (2800 MB/s)</option>
+                                <option value="2000">USB 3.2 Gen 2x2 NVMe (SanDisk Pro) (2000 MB/s)</option>
+                                <option value="1000" selected>USB 3.2 Gen 2 SSD (Samsung T7) (1000 MB/s)</option>
+                                <option value="500">USB 3.0 / SATA SSD (e.g. Samsung T5) (500 MB/s)</option>
+                                <option value="250">HDD RAID 0 (250 MB/s)</option>
+                                <option value="150">HDD SATA/USB (e.g. LaCie Rugged) (150 MB/s)</option>
+                                <option value="110">1GbE NAS (110 MB/s)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-[rgba(0,229,255,0.05)] p-6 border border-[rgba(0,229,255,0.2)] rounded-xl flex flex-col justify-center items-center gap-2">
+                        <div class="flex items-center gap-2 text-white/50 uppercase text-[10px] font-bold tracking-widest">
+                            <img class="calc-icon-sm" src="IMG_assets/Icono%20Off%20Load.png" alt=""> Estimated Offload Time
+                        </div>
+                        <div id="offload-time-display" class="font-display font-bold text-4xl text-[#00E5FF] drop-shadow-[0_0_12px_rgba(0,229,255,0.4)]" aria-live="polite" role="status">
+                            00h 00m 00s
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: STRUCTURE AUTOMATION -->
+        <section id="view-structure" class="view-section hidden">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-stretch">
+                <!-- Left Panel: Controls -->
+                <div class="col-span-1 xl:col-span-4 bg-white p-6 md:p-8 neo-border neo-shadow flex flex-col">
+                    <h2
+                        class="text-3xl font-display font-bold mb-6 border-b-4 border-primary pb-2 flex items-center gap-2">
+                        <img class="calc-icon calc-icon-glow" src="IMG_assets/Icono%20Structure%20Gen.png" alt=""> Structure Gen
+                    </h2>
+
+                    <div class="space-y-4 mb-6 flex-grow">
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold mb-1 uppercase text-primary/80">Project
+                                    Name</label>
+                                <input type="text" id="project-name" class="neo-input"
+                                    placeholder="e.g., Commercial_Nike" value="Cine_Project">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1 uppercase text-primary/80">Shooting
+                                    Day</label>
+                                <input type="text" id="shooting-day" class="neo-input" placeholder="e.g., Day_01"
+                                    value="Day_01">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold mb-1 uppercase text-primary/80">Camera
+                                    Count</label>
+                                <select id="camera-count"
+                                    class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                                    <option value="1">1 Camera (A Cam)</option>
+                                    <option value="2" selected>2 Cameras (A, B Cam)</option>
+                                    <option value="3">3 Cameras (A, B, C Cam)</option>
+                                    <option value="4">4 Cameras (A, B, C, D Cam)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1 uppercase text-primary/80">Includes</label>
+                                <div class="flex flex-col gap-2 mt-2">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" id="include-reports" class="w-5 h-5 accent-primary"
+                                            checked>
+                                        <span class="text-sm font-bold opacity-90">Reports & Logs</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" id="include-sound" class="w-5 h-5 accent-primary"
+                                            checked>
+                                        <span class="text-sm font-bold opacity-90">Sound / Audio Folder</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" id="include-proxies" class="w-5 h-5 accent-primary"
+                                            checked>
+                                        <span class="text-sm font-bold opacity-90">Proxies Folder</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" id="include-assets" class="w-5 h-5 accent-primary">
+                                        <span class="text-sm font-bold opacity-90">Assets / GFX</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" id="include-docs" class="w-5 h-5 accent-primary" checked>
+                                        <span class="text-sm font-bold opacity-90">Production Docs</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold mb-1 uppercase text-primary/80">Projects &
+                                Post</label>
+                            <div class="flex flex-wrap gap-4 mt-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="nle-premiere" class="w-5 h-5 accent-primary" checked>
+                                    <span class="text-sm font-bold opacity-90">Premiere Pro</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="nle-resolve" class="w-5 h-5 accent-primary" checked>
+                                    <span class="text-sm font-bold opacity-90">DaVinci Resolve</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="nle-fcpx" class="w-5 h-5 accent-primary">
+                                    <span class="text-sm font-bold opacity-90">Final Cut Pro</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="include-color" class="w-5 h-5 accent-primary" checked>
+                                    <span class="text-sm font-bold opacity-90">Color & LUTs</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btn-generate"
+                        class="liquid-btn liquid-btn-primary w-full py-4 text-xl flex items-center justify-center gap-2 mt-auto">
+                        <img class="calc-icon" src="IMG_assets/Icono%20Generate%20Structure.png" alt=""> Generate Structure
+                    </button>
+                </div>
+
+                <!-- Right Panel: Results -->
+                <div class="col-span-1 xl:col-span-8 flex flex-col min-h-[500px]">
+                    <div id="structure-result"
+                        class="bg-white p-6 md:p-8 neo-border neo-shadow flex-grow flex flex-col transition-all">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3 border-b-2 border-primary pb-3">
+                            <h3 class="font-display font-bold text-xl flex items-center gap-2">
+                                <img class="calc-icon" src="IMG_assets/Icono%20Generated%20Tree.png" alt=""> Generated Tree
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <button id="btn-copy-text"
+                                    class="liquid-btn px-3 py-2 text-xs flex items-center gap-1">
+                                    <img class="calc-icon-sm" src="IMG_assets/Icono%20Text.png" alt=""> Text
+                                </button>
+                                <button id="btn-copy-script"
+                                    class="liquid-btn px-3 py-2 text-xs flex items-center gap-1">
+                                    <img class="calc-icon-sm" src="IMG_assets/Icono%20Script.png" alt=""> Script
+                                </button>
+                                <button id="btn-download-zip"
+                                    class="liquid-btn liquid-btn-primary px-3 py-2 text-xs flex items-center gap-1">
+                                    <img class="calc-icon-sm" src="IMG_assets/Icono%20ZIP.png" alt=""> ZIP
+                                </button>
+                            </div>
+                        </div>
+                        <div id="tree-container"
+                            class="structure-empty-state font-mono text-sm leading-relaxed overflow-x-auto whitespace-pre bg-surface p-4 neo-border flex-grow text-primary/80">
+                            Ready to generate structure...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: AI FUTURE BETA -->
+        <section id="view-roadmap" class="view-section hidden">
+            <div
+                class="bg-primary text-white p-8 md:p-12 neo-border neo-shadow max-w-2xl mx-auto relative overflow-hidden">
+                <!-- Background decorative -->
+                <div
+                    class="absolute top-[-50px] right-[-50px] text-[200px] text-white/5 font-display font-black pointer-events-none">
+                    2.0
+                </div>
+
+                <div class="relative z-10">
+                    <div
+                        class="inline-block bg-primary-container text-primary font-bold px-3 py-1 text-sm border-2 border-primary mb-6 neo-shadow">
+                        Roadmap v2.0 Beta
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mb-4 leading-tight">
+                        AI Pre-Pro Director
+                    </h2>
+
+                    <p class="text-base opacity-90 mb-6 font-sans max-w-lg leading-relaxed text-white/80">
+                        En la v2.0, las sugerencias técnicas de la IA poblarán automáticamente la Calculadora de
+                        Almacenamiento Multi-cámara, automatizando la logística de datos de tu rodaje basándose solo en
+                        tu guion.
+                    </p>
+
+                    <!-- Input Area -->
+                    <div class="mb-6 relative group">
+                        <textarea
+                            class="w-full bg-white/5 border-4 border-white/20 p-4 text-white/60 font-mono text-sm resize-none h-32 focus:outline-none cursor-not-allowed transition-colors rounded-none"
+                            placeholder="Pega tu escena, guion o idea aquí..." disabled></textarea>
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div
+                                class="bg-primary border-2 border-white/20 px-4 py-2 font-display text-sm font-bold flex items-center gap-2 group-hover:scale-105 transition-transform">
+                                <span class="material-symbols-outlined text-lg opacity-80">upload_file</span> Drag &
+                                Drop PDF
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="ai-glow-btn bg-black text-tertiary w-full py-4 px-4 font-display font-bold cursor-not-allowed opacity-80 flex items-center justify-center gap-3 transition-transform duration-300 mb-8 border-2 border-tertiary shadow-[0_0_20px_rgba(0,85,255,0.3)] pointer-events-none">
+                        <span class="material-symbols-outlined text-3xl">psychology</span>
+                        <span class="text-xl">Generate Technical Shotlist</span>
+                    </button>
+
+                    <!-- Mockup Results -->
+                    <div class="space-y-4 relative">
+                        <!-- Connecting line/indicator -->
+                        <div
+                            class="absolute left-6 top-[-20px] bottom-6 w-1 bg-gradient-to-b from-tertiary to-transparent opacity-30 z-0">
+                        </div>
+
+                        <div
+                            class="bg-white/5 border-l-4 border-l-tertiary border-y-2 border-r-2 border-y-white/10 border-r-white/10 p-5 relative z-10 ml-10">
+                            <div class="font-bold font-display text-tertiary mb-2 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">movie</span> Scene 01 - Action
+                            </div>
+                            <p class="text-sm font-mono leading-relaxed text-white/80">
+                                <span class="text-primary-container font-bold">Plano:</span> Wide Shot (Gran
+                                Angular)<br>
+                                <span class="text-primary-container font-bold">Lente Sugerido:</span> 24mm<br>
+                                <span class="text-primary-container font-bold">Setup:</span> ARRI Alexa @ <span
+                                    class="text-primary bg-primary-container px-1 font-bold">60fps</span> (Slow Motion
+                                para impacto dramático).
+                            </p>
+                        </div>
+
+                        <div
+                            class="bg-white/5 border-l-4 border-l-tertiary border-y-2 border-r-2 border-y-white/10 border-r-white/10 p-5 relative z-10 ml-10">
+                            <div class="font-bold font-display text-tertiary mb-2 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">forum</span> Scene 02 - Dialogue
+                            </div>
+                            <p class="text-sm font-mono leading-relaxed text-white/80">
+                                <span class="text-primary-container font-bold">Plano:</span> Over the Shoulder (OTS)<br>
+                                <span class="text-primary-container font-bold">Lente Sugerido:</span> 50mm<br>
+                                <span class="text-primary-container font-bold">Setup:</span> ARRI Alexa @ 24fps.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- VIEW 4: CARD ROTATION SIMULATOR -->
+        <section id="view-cards" class="view-section hidden">
+            <div class="bg-white p-6 md:p-8 neo-border neo-shadow">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-4 border-primary pb-4 gap-3">
+                    <h2 class="text-2xl md:text-3xl font-display font-bold flex items-center gap-2">
+                        <img class="calc-icon calc-icon-glow" src="IMG_assets/Icono%20Card%20Rotation%20Sim.png" alt=""> Card Rotation Sim
+                    </h2>
+                    <div class="card-sim-sync-row flex items-center gap-2 w-full md:w-auto">
+                        <select id="sim-active-cam-select" class="neo-input py-2 px-3 text-sm hidden font-bold min-w-0">
+                            <option value="" disabled selected>Select Cam</option>
+                        </select>
+                        <button id="btn-import-calc" class="card-sim-sync-btn liquid-btn px-4 py-2 text-sm whitespace-nowrap flex items-center justify-center gap-1">
+                            <img class="calc-icon-sm" src="IMG_assets/Icono%20Export.png" alt="">
+                            <span class="card-sim-sync-label">Sync from Calc</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Setup Inputs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Camera / Bitrate -->
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Camera
+                            System</label>
+                        <select id="sim-cam-select"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                            <option value="" disabled selected>Select Camera...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Codec</label>
+                        <select id="sim-codec-select"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]"
+                            disabled>
+                            <option value="" disabled selected>Select Codec...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Resolution</label>
+                        <select id="sim-res-select"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]"
+                            disabled>
+                            <option value="" disabled selected>Res</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">FPS</label>
+                        <select id="sim-fps-select"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]"
+                            disabled>
+                            <option value="" disabled selected>FPS</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Card
+                            Type</label>
+                        <select id="sim-card-type"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Card
+                            Size</label>
+                        <select id="sim-card-size"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Source
+                            Read Speed</label>
+                        <select id="sim-source-speed"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                            <option value="2000">Codex SXR Capture Drive (2000 MB/s)</option>
+                            <option value="1700">CFexpress Type B (1700 MB/s)</option>
+                            <option value="1000">Codex Compact Drive (1000 MB/s)</option>
+                            <option value="800">CFexpress Type A / RED Mini-Mag (800 MB/s)</option>
+                            <option value="500">SATA SSD / CFast 2.0 (500 MB/s)</option>
+                            <option value="300" selected>SDXC UHS-II (300 MB/s)</option>
+                            <option value="90">SDXC UHS-I (90 MB/s)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Target
+                            Write Speed</label>
+                        <select id="sim-target-speed"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                            <option value="2800">Thunderbolt 4/3 NVMe (2800 MB/s)</option>
+                            <option value="2000">USB 3.2 Gen 2x2 NVMe (SanDisk Pro) (2000 MB/s)</option>
+                            <option value="1000" selected>USB 3.2 Gen 2 SSD / 10GbE NAS (Samsung T7) (1000 MB/s)
+                            </option>
+                            <option value="500">USB 3.0 / SATA SSD (Samsung T5) (500 MB/s)</option>
+                            <option value="250">HDD RAID 0 (250 MB/s)</option>
+                            <option value="150">HDD SATA/USB (LaCie Rugged) (150 MB/s)</option>
+                            <option value="110">1GbE NAS (110 MB/s)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-bold mb-1 uppercase tracking-widest text-primary/70">Shooting
+                            Hours</label>
+                        <select id="sim-hours"
+                            class="neo-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:calc(100%-1rem)_center]">
+                            <option value="1">1 Hour</option>
+                            <option value="2">2 Hours</option>
+                            <option value="4">4 Hours</option>
+                            <option value="6">6 Hours</option>
+                            <option value="8" selected>8 Hours</option>
+                            <option value="10">10 Hours</option>
+                            <option value="12">12 Hours</option>
+                            <option value="16">16 Hours</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Run Simulation -->
+                <button id="btn-run-sim"
+                    class="liquid-btn liquid-btn-primary w-full py-4 text-xl flex items-center justify-center gap-2 mb-8">
+                    <img class="calc-icon" src="IMG_assets/Icono%20Run%20Simulation.png" alt=""> Run Simulation
+                </button>
+
+                <!-- Results (hidden until sim runs) -->
+                <div id="sim-results" class="hidden">
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="sim-stat-card">
+                            <div class="sim-stat-value highlight" id="sim-min-cards">—</div>
+                            <div class="sim-stat-label">Min. Cards Needed</div>
+                        </div>
+                        <div class="sim-stat-card">
+                            <div class="sim-stat-value" id="sim-fill-time">—</div>
+                            <div class="sim-stat-label">Fill Time / Card</div>
+                        </div>
+                        <div class="sim-stat-card">
+                            <div class="sim-stat-value" id="sim-offload-time">—</div>
+                            <div class="sim-stat-label">Offload Time / Card</div>
+                        </div>
+                        <div class="sim-stat-card">
+                            <div class="sim-stat-value" id="sim-total-swaps">—</div>
+                            <div class="sim-stat-label">Total Swaps</div>
+                        </div>
+                    </div>
+
+                    <!-- Semaphore -->
+                    <div id="sim-semaphore" class="semaphore semaphore--ok mb-6">
+                        <div class="semaphore-light"></div>
+                        <span class="semaphore-label" id="sim-semaphore-label">Comfortable — no bottleneck risk</span>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="mb-4">
+                        <h3 class="font-display font-bold text-lg mb-3 flex items-center gap-2">
+                            <img class="calc-icon" src="IMG_assets/Icono%20Card%20Rotation%20Timeline.png" alt=""> Card Rotation Timeline
+                        </h3>
+                        <div class="timeline-legend mb-3">
+                            <div class="legend-item">
+                                <div class="legend-swatch legend-swatch--recording"></div> Recording
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-swatch legend-swatch--queued"></div> Queued
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-swatch legend-swatch--offloading"></div> Offloading
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-swatch legend-swatch--ready"></div> Ready
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-swatch legend-swatch--idle"></div> Idle
+                            </div>
+                        </div>
+                        <div class="timeline-canvas-wrap">
+                            <canvas id="sim-timeline-canvas" height="300"
+                                aria-label="Card rotation timeline visualization" role="img"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 5: TECHNICAL REPORT -->
+        <section id="view-report" class="view-section hidden">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-stretch h-full">
+                <!-- Left Panel: Controls -->
+                <div class="col-span-1 xl:col-span-4 bg-white p-6 md:p-8 neo-border neo-shadow flex flex-col no-print">
+                    <h2
+                        class="text-3xl font-display font-bold flex items-center gap-2 mb-6 border-b-4 border-primary pb-2">
+                        <img class="calc-icon calc-icon-glow" src="IMG_assets/Icono%20Technical%20Report.png" alt=""> Technical Report
+                    </h2>
+
+                    <div class="mb-8 flex-grow">
+                        <p class="text-base font-mono text-primary/80 mb-4">
+                            El <strong>Technical Production Report</strong> consolida automáticamente todas tus
+                            estimaciones en un único documento profesional, ideal para compartir con el equipo de
+                            cámara, DIT o post-producción.
+                        </p>
+                        <div class="bg-surface p-4 neo-border mb-6">
+                            <h4 class="font-bold text-sm uppercase tracking-widest text-primary mb-2">Incluye
+                                automáticamente:</h4>
+                            <ul class="list-disc pl-5 font-mono text-sm text-primary/70 space-y-1">
+                                <li>Resumen de almacenamiento, márgenes y estrategia de backup.</li>
+                                <li>Tiempos de volcado y predicción de cuellos de botella.</li>
+                                <li>Simulación de tarjetas (si se ejecutó).</li>
+                                <li>Estructura de carpetas y Shotlist (si fueron creados).</li>
+                                <li>Advertencias de flujo de trabajo.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button id="btn-generate-report"
+                        class="liquid-btn liquid-btn-primary w-full py-4 text-xl flex items-center justify-center gap-2 mt-auto">
+                        <img class="calc-icon" src="IMG_assets/Icono%20Generate%20Report.png" alt=""> Generate Report
+                    </button>
+                </div>
+
+                <!-- Right Panel: PDF Viewer Style -->
+                <div class="col-span-1 xl:col-span-8 flex flex-col min-h-[600px]">
+                    <div id="report-output-container"
+                        class="bg-white p-8 md:p-12 neo-border neo-shadow flex-grow flex flex-col transition-all relative">
+                        <div class="no-print absolute top-4 right-4 flex gap-2">
+                            <button id="btn-copy-report"
+                                class="liquid-btn px-3 py-2 text-xs flex items-center gap-1">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20Text.png" alt=""> Text
+                            </button>
+                            <button id="btn-print-report"
+                                class="liquid-btn liquid-btn-primary px-3 py-2 text-xs flex items-center gap-1">
+                                <img class="calc-icon-sm" src="IMG_assets/Icono%20PDF.png" alt=""> PDF
+                            </button>
+                        </div>
+
+                        <div id="report-preview"
+                            class="report-content font-mono text-sm leading-relaxed mt-10 flex-grow">
+                            <!-- Placeholder, will be overwritten by JS -->
+                            <div
+                                class="flex flex-col items-center justify-center h-full opacity-50 text-center py-20 no-print">
+                                <img class="report-empty-icon" src="IMG_assets/Icono%20Technical%20Report.png" alt="">
+                                <p class="font-display font-bold text-xl uppercase tracking-widest">Ready to compile
+                                    report</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 6: PRODUCER MODE -->
+        <section id="view-producer" class="view-section hidden">
+            <div class="space-y-6">
+                <!-- Header -->
+                <div
+                    class="bg-white p-6 md:p-8 neo-border neo-shadow flex flex-col md:flex-row justify-between items-start md:items-center border-b-4 border-primary gap-4">
+                    <div>
+                        <h2 class="text-3xl font-display font-bold flex items-center gap-2">
+                            <img class="calc-icon" src="IMG_assets/Icono%20Producer%20Mode.png" alt=""> Producer Mode
+                        </h2>
+                        <p class="font-sans font-bold text-primary/80 mt-1 uppercase tracking-wider text-sm">Budget &
+                            Risk Overview</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <p class="text-sm text-primary/60 italic font-medium hidden md:block max-w-sm text-right">
+                            Translates technical data into cost, risk & workflow insights.</p>
+                        <button id="btn-copy-producer"
+                            class="liquid-btn py-3 px-6 flex items-center justify-center gap-2">
+                            <img class="calc-icon-sm" src="IMG_assets/Icono%20Text.png" alt=""> Copy Summary
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Executive Summary Ribbon -->
+                <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+                    <div class="bg-primary-container p-6 neo-border neo-shadow">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-primary/70 mb-2">Required
+                            Storage</span>
+                        <span id="prod-required-storage" class="font-display font-bold text-3xl">0 TB</span>
+                    </div>
+                    <div class="bg-surface p-6 neo-border neo-shadow">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-primary/70 mb-2">Recommended
+                            Cap</span>
+                        <span id="prod-rec-capacity" class="font-display font-bold text-3xl">0 TB</span>
+                    </div>
+                    <div class="bg-primary text-white p-6 neo-border neo-shadow">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-white/70 mb-2">Est. Storage
+                            Cost</span>
+                        <span id="prod-est-cost" class="font-display font-bold text-3xl">$0</span>
+                    </div>
+                    <div id="prod-risk-card" class="bg-surface p-6 neo-border neo-shadow transition-colors">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-primary/70 mb-2">Workflow
+                            Risk</span>
+                        <span id="prod-workflow-risk" class="font-display font-bold text-3xl">Low</span>
+                    </div>
+                    <div class="bg-surface p-6 neo-border neo-shadow">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-primary/70 mb-2">Offload
+                            Impact</span>
+                        <span id="prod-offload-impact" class="font-display font-bold text-3xl">Manageable</span>
+                    </div>
+                    <div class="bg-surface p-6 neo-border neo-shadow">
+                        <span class="block text-xs font-bold uppercase tracking-widest text-primary/70 mb-2">Production
+                            Status</span>
+                        <span id="prod-status" class="font-display font-bold text-3xl">Not Enough Data</span>
+                    </div>
+                </div>
+
+                <!-- 50/50 Split Bottom -->
+                <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-stretch">
+                    <!-- Storage Cost Estimator -->
+                    <div class="col-span-1 xl:col-span-6 bg-white p-6 md:p-8 neo-border neo-shadow">
+                        <h3
+                            class="text-2xl font-display font-bold mb-6 flex items-center gap-2 border-b-2 border-primary pb-3">
+                            <img class="calc-icon producer-storage-cost-icon" src="IMG_assets/Icono%20Storage%20Cost%20Estimator.png" alt=""> Storage Cost Estimator
+                        </h3>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold uppercase tracking-wider text-primary/70 w-1/2">Primary
+                                    SSD (USD/TB)</label>
+                                <input type="number" id="cost-primary-ssd"
+                                    class="neo-input w-1/3 text-right py-2 text-lg font-mono" value="80" min="0">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold uppercase tracking-wider text-primary/70 w-1/2">Backup
+                                    HDD (USD/TB)</label>
+                                <input type="number" id="cost-backup-hdd"
+                                    class="neo-input w-1/3 text-right py-2 text-lg font-mono" value="35" min="0">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold uppercase tracking-wider text-primary/70 w-1/2">Fast
+                                    NVMe (USD/TB)</label>
+                                <input type="number" id="cost-fast-nvme"
+                                    class="neo-input w-1/3 text-right py-2 text-lg font-mono" value="120" min="0">
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 font-mono text-base bg-surface p-6 neo-border">
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary/70">Minimum Cost:</span>
+                                <span id="prod-min-cost" class="font-bold text-xl">$0</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t-2 border-primary/20 pt-4 mt-2">
+                                <span class="text-primary/70">Recommended Cost:</span>
+                                <span id="prod-rec-cost" class="font-bold text-2xl text-primary">$0</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-primary/70">Safe/Pro Cost (+20%):</span>
+                                <span id="prod-safe-cost" class="font-bold text-xl">$0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Production Risk -->
+                    <div class="col-span-1 xl:col-span-6 bg-white p-6 md:p-8 neo-border neo-shadow">
+                        <h3
+                            class="text-2xl font-display font-bold mb-6 flex items-center gap-2 border-b-2 border-primary pb-3">
+                            <img class="calc-icon" src="IMG_assets/Icono%20Production%20Risk.png" alt=""> Production Risk
+                        </h3>
+                        <div id="prod-risk-reasons"
+                            class="space-y-4 font-mono text-base text-primary/80 bg-surface p-6 neo-border h-[calc(100%-5rem)]">
+                            <div class="flex flex-col items-center justify-center h-full opacity-50 text-center py-10">
+                                <img class="calc-icon-lg mb-3" src="IMG_assets/Icono%20Production%20Risk.png" alt="">
+                                <p>Add at least one camera setup and shooting hours to generate a risk overview.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scenario Impact -->
+                <div>
+                    <h3
+                        class="text-xl font-display font-bold mb-4 flex items-center gap-2 border-b-4 border-primary pb-2">
+                        <img class="calc-icon" src="IMG_assets/Icono%20Scenario%20Impact.png" alt=""> Scenario Impact
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-surface p-4 neo-border">
+                            <h4 class="font-bold text-sm uppercase tracking-widest text-primary mb-2">+1 Camera</h4>
+                            <div id="scenario-add-cam" class="font-mono text-sm text-primary/70 space-y-1">
+                                No data.
+                            </div>
+                        </div>
+                        <div class="bg-surface p-4 neo-border">
+                            <h4 class="font-bold text-sm uppercase tracking-widest text-primary mb-2">+1 Shooting Hour
+                            </h4>
+                            <div id="scenario-add-hour" class="font-mono text-sm text-primary/70 space-y-1">
+                                No data.
+                            </div>
+                        </div>
+                        <div class="bg-surface p-4 neo-border">
+                            <h4 class="font-bold text-sm uppercase tracking-widest text-primary mb-2">Safer Backup</h4>
+                            <div id="scenario-safe-backup" class="font-mono text-sm text-primary/70 space-y-1">
+                                No data.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations & Summary -->
+                <div class="bg-primary-container p-6 neo-border border-2">
+                    <h3 class="text-xl font-display font-bold mb-3">Producer Explanation</h3>
+                    <p id="prod-summary-text" class="text-base leading-relaxed font-medium text-primary mb-6">
+                        Please configure the calculator to see the production summary.
+                    </p>
+
+                    <h3 class="text-lg font-bold uppercase tracking-widest mb-3 text-primary/80">Recommendations</h3>
+                    <ul id="prod-recommendations" class="list-disc pl-5 font-mono text-sm space-y-2 text-primary/90">
+                        <li>Configure at least one camera.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="nav-home-hidden fixed bottom-0 w-full bg-white border-t-4 border-primary z-50 neo-shadow"
+        aria-label="Main navigation">
+        <ul class="flex justify-around max-w-lg md:max-w-4xl mx-auto">
+            <li class="w-1/6 p-1 md:p-2">
+                <button data-target="view-home"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors bg-primary-container font-bold text-primary neo-shadow">
+                    <img class="dock-icon" src="IMG_assets/Icono%20Home.png" alt="">
+                    <span class="text-[10px] md:text-xs font-display mt-1">Home</span>
+                </button>
+            </li>
+            <li class="w-1/6 p-1 md:p-2">
+                <button data-target="view-calculator"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors hover:bg-surface text-primary/70 hover:text-primary">
+                    <img class="dock-icon" src="IMG_assets/Icono%20Calc.png" alt="">
+                    <span class="text-[10px] md:text-xs font-display mt-1">Calc</span>
+                </button>
+            </li>
+            <li class="w-1/6 p-1 md:p-2">
+                <button data-target="view-cards"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors hover:bg-surface text-primary/70 hover:text-primary">
+                    <img class="dock-icon" src="IMG_assets/Icono%20SD%20Card.png" alt="">
+                    <span class="text-[10px] md:text-xs font-display mt-1">Cards</span>
+                </button>
+            </li>
+            <li class="w-1/6 p-1 md:p-2">
+                <button data-target="view-structure"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors hover:bg-surface text-primary/70 hover:text-primary">
+                    <img class="dock-icon" src="IMG_assets/Icono%20Folder.png" alt="">
+                    <span class="text-[10px] md:text-xs font-display mt-1">Structure</span>
+                </button>
+            </li>
+            <li class="w-1/6 p-1 md:p-2">
+                <button data-target="view-report"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors hover:bg-surface text-primary/70 hover:text-primary group">
+                    <img class="dock-icon" src="IMG_assets/Icono%20Report.png" alt="">
+                    <span
+                        class="text-[10px] md:text-xs font-display mt-1 group-hover:text-tertiary transition-colors">Report</span>
+                </button>
+            </li>
+            <li class="w-1/6 p-1 md:p-2">
+                <button data-target="view-producer"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors hover:bg-surface text-primary/70 hover:text-primary group">
+                    <img class="dock-icon" src="IMG_assets/Icono%20Toolbox%20Producer.png" alt="">
+                    <span
+                        class="text-[10px] md:text-xs font-display mt-1 group-hover:text-tertiary transition-colors">Producer</span>
+                </button>
+            </li>
+            <li class="hidden">
+                <button data-target="view-roadmap"
+                    class="nav-btn w-full flex flex-col items-center justify-center py-2 px-1 border-4 border-transparent rounded-lg transition-colors hover:bg-surface text-primary/70 hover:text-primary group">
+                    <img class="dock-icon" src="IMG_assets/Icono%20AI%20Chip.png" alt="">
+                    <span
+                        class="text-[10px] md:text-xs font-display mt-1 group-hover:text-tertiary transition-colors">AI
+                        Beta</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+
+    <!-- Orbital Physics Controller -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orbitRing = document.querySelector('.orbit-ring');
+            const satellites = document.querySelectorAll('.satellite');
+            const centerOrb = document.querySelector('.center-orb');
+            
+            if (!orbitRing || satellites.length === 0) return;
+
+            // Target speed: 360 degrees / 60 seconds / 60 fps = 0.1 degrees per frame
+            let targetSpeed = 0.1; 
+            let currentSpeed = targetSpeed;
+            let currentAngle = 0;
+            let isHovered = false;
+            let tapPauseUntil = 0;
+            const tapPauseMs = 2400;
+
+            // Pause orbit when hovering any satellite card
+            satellites.forEach(sat => {
+                sat.addEventListener('mouseenter', () => isHovered = true);
+                sat.addEventListener('mouseleave', () => isHovered = false);
+            });
+
+            if (centerOrb) {
+                centerOrb.addEventListener('pointerdown', () => {
+                    tapPauseUntil = performance.now() + tapPauseMs;
+                });
+            }
+
+            function animateOrbit() {
+                // Determine target speed based on hover/tap pause state
+                const isTapPaused = performance.now() < tapPauseUntil;
+                const shouldPause = isHovered || isTapPaused;
+                const target = shouldPause ? 0 : targetSpeed;
+                
+                // Physics easing for smooth brake and acceleration
+                currentSpeed += (target - currentSpeed) * (shouldPause ? 0.075 : 0.045);
+
+                // Update angle
+                currentAngle += currentSpeed;
+                if (currentAngle >= 360) currentAngle -= 360;
+
+                // Push angle to a CSS variable on the orbit container
+                // This allows CSS to handle responsive positioning naturally
+                orbitRing.style.setProperty('--orbit-rotation', `${currentAngle}deg`);
+
+                requestAnimationFrame(animateOrbit);
+            }
+
+            // Only run animation if user hasn't requested reduced motion
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!prefersReducedMotion) {
+                animateOrbit();
+            }
+        });
+    </script>
+</body>
+
+</html>
