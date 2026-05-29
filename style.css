@@ -309,9 +309,6 @@ p {
   align-items: center;
   justify-content: center;
   filter: url(#threshold);
-  /* GPU Acceleration for Safari */
-  transform: translate3d(0, 0, 0);
-  will-change: filter;
 }
 
 .gooey-text {
@@ -326,9 +323,6 @@ p {
   margin: 0;
   user-select: none;
   cursor: default;
-  /* GPU Acceleration for Safari */
-  transform: translate3d(0, 0, 0);
-  will-change: filter, opacity;
 }
 
 .hero-desc {
@@ -682,6 +676,11 @@ p {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .gooey-texts {
+    transform: translate3d(0, 0, 0);
+    will-change: filter;
+  }
+
   .gooey-text {
     font-size: min(8vw, 2.2rem);
     background: none;
@@ -690,6 +689,9 @@ p {
     -webkit-text-fill-color: initial;
     color: var(--text-main);
     white-space: nowrap;
+    /* GPU Acceleration exclusively on mobile */
+    transform: translate3d(0, 0, 0);
+    will-change: filter, opacity;
   }
 
   .hero-gooey-container {
