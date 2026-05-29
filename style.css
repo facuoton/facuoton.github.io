@@ -676,8 +676,18 @@ p {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
+  .gooey-text {
+    font-size: min(8vw, 2.2rem);
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: var(--text-main);
+    white-space: nowrap;
+  }
+
+  .hero-gooey-container {
+    height: 60px;
   }
 
   .grid {

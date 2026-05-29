@@ -14,7 +14,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Mobile Triple Tap Trigger
-const heroTitle = document.querySelector('.hero-title');
+const heroTitle = document.querySelector('.hero-gooey-container');
 if (heroTitle) {
     let tapCount = 0;
     let tapTimer = null;
@@ -65,7 +65,7 @@ function initGravity() {
     const selectors = [
         '.logo',
         '.main-nav a',
-        '.hero-title',
+        '.hero-gooey-container',
         '.hero-desc',
         '.hero-cta',
         '.section-title',
