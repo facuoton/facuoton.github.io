@@ -566,14 +566,17 @@
       text2.textContent = morphTexts[(morphTextIndex + 1) % morphTexts.length];
 
       function setMorph(fraction) {
-        const blur2 = Math.min(8 / fraction - 8, 20);
+        const isMobile = window.innerWidth <= 768;
+        const maxBlur = isMobile ? 20 : 100;
+
+        const blur2 = Math.min(8 / fraction - 8, maxBlur);
         const opacity2 = Math.pow(fraction, 0.4) * 100;
         text2.style.filter = `blur(${blur2}px)`;
         text2.style.webkitFilter = `blur(${blur2}px)`;
         text2.style.opacity = `${opacity2}%`;
 
         let invFraction = 1 - fraction;
-        const blur1 = Math.min(8 / invFraction - 8, 20);
+        const blur1 = Math.min(8 / invFraction - 8, maxBlur);
         const opacity1 = Math.pow(invFraction, 0.4) * 100;
         text1.style.filter = `blur(${blur1}px)`;
         text1.style.webkitFilter = `blur(${blur1}px)`;
