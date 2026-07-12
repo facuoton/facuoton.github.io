@@ -436,9 +436,9 @@ p {
 }
 
 .card-overlay-rich {
-  padding-top: 4.5rem;
+  padding-top: 2.25rem;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.88) 48%, rgba(0, 0, 0, 0.34) 78%, transparent 100%);
+    linear-gradient(to top, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0.3) 88%, transparent 100%);
 }
 
 .card:hover .card-overlay {
@@ -461,16 +461,20 @@ p {
 
 .card-description {
   max-width: 34rem;
-  margin-top: 0.65rem;
+  margin-top: 0.5rem;
   color: rgba(255, 255, 255, 0.84);
   font-size: 0.9rem;
   line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-cta {
   display: inline-flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   color: var(--text-main);
   font-size: 0.78rem;
   font-weight: 700;
