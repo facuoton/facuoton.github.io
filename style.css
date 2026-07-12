@@ -538,18 +538,12 @@ p {
   min-height: 100vh;
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 2rem;
-  transition: color 0.3s ease;
+.btn-back {
+  margin-bottom: 2.5rem;
 }
 
-.back-link:hover {
-  color: var(--text-main);
+.btn-back:hover i {
+  transform: translateX(-4px);
 }
 
 /* About Section */
