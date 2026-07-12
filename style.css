@@ -478,6 +478,80 @@ p {
   letter-spacing: 0.08em;
 }
 
+/* More Projects Button */
+.more-projects {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+.btn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s var(--ease-out);
+}
+
+.btn-more i {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn-more:hover {
+  background: var(--text-main);
+  color: var(--bg-body);
+  border-color: var(--text-main);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.12);
+}
+
+.btn-more:hover i {
+  transform: translateX(4px);
+}
+
+/* Card "new" badge */
+.card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background: var(--accent-primary);
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+/* Gallery page */
+.gallery-page-main {
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--text-main);
+}
+
 /* About Section */
 .about-section {
   padding: 6rem 0;
