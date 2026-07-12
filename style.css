@@ -542,6 +542,10 @@ p {
   min-height: 100vh;
 }
 
+.gallery-page-main .portfolio-section {
+  padding-top: 20px;
+}
+
 .btn-back {
   margin-bottom: 2.5rem;
 }
