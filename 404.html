@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Página no encontrada — Facundo Otón</title>
+  <script>
+    // QuestOS es una SPA: si alguien refresca una ruta interna
+    // (/questos/dashboard, etc.), GitHub Pages cae acá. Lo devolvemos a la
+    // entrada de la app — su progreso vive en localStorage, no se pierde.
+    if (window.location.pathname.startsWith("/questos/")) {
+      window.location.replace("/questos/");
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0d0d0d;
+      color: #eee;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      text-align: center;
+    }
+
+    a {
+      color: #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>404</h1>
+    <p>Esta página no existe.</p>
+    <p><a href="/">Volver al inicio</a></p>
+  </div>
+</body>
+
+</html>
