@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   version="1.0"
+   width="73.924896"
+   height="351.11072"
+   id="svg2">
+  <defs
+     id="defs4">
+    <pattern
+       xlink:href="#pattern4651"
+       id="pattern4653"
+       patternTransform="translate(87.000344,284.61477)" />
+    <pattern
+       xlink:href="#pattern4649"
+       id="pattern4651"
+       patternTransform="translate(87.022442,284.61477)" />
+    <pattern
+       xlink:href="#pattern4647"
+       id="pattern4649"
+       patternTransform="translate(87.022442,284.63686)" />
+    <pattern
+       xlink:href="#pattern4645"
+       id="pattern4647"
+       patternTransform="translate(87.044539,284.63686)" />
+    <pattern
+       xlink:href="#pattern4643"
+       id="pattern4645"
+       patternTransform="translate(87.044539,284.65896)" />
+    <pattern
+       xlink:href="#pattern4641"
+       id="pattern4643"
+       patternTransform="translate(87.044539,284.68106)" />
+    <pattern
+       xlink:href="#pattern4639"
+       id="pattern4641"
+       patternTransform="translate(87.044539,284.72525)" />
+    <pattern
+       xlink:href="#pattern4637"
+       id="pattern4639"
+       patternTransform="translate(87.044539,284.74735)" />
+    <pattern
+       xlink:href="#pattern4635"
+       id="pattern4637"
+       patternTransform="translate(87.044539,284.72525)" />
+    <pattern
+       xlink:href="#pattern4633"
+       id="pattern4635"
+       patternTransform="translate(87.044539,284.70315)" />
+    <pattern
+       xlink:href="#pattern4631"
+       id="pattern4633"
+       patternTransform="translate(87.044539,284.68106)" />
+    <pattern
+       xlink:href="#pattern4629"
+       id="pattern4631"
+       patternTransform="translate(87.044539,284.65896)" />
+    <pattern
+       xlink:href="#pattern4627"
+       id="pattern4629"
+       patternTransform="translate(87.044539,284.63686)" />
+    <pattern
+       xlink:href="#pattern4625"
+       id="pattern4627"
+       patternTransform="translate(87.044539,284.61477)" />
+    <pattern
+       xlink:href="#pattern4623"
+       id="pattern4625"
+       patternTransform="translate(87.044539,284.59267)" />
+    <pattern
+       xlink:href="#pattern4621"
+       id="pattern4623"
+       patternTransform="translate(87.044539,284.57057)" />
+    <pattern
+       xlink:href="#pattern4619"
+       id="pattern4621"
+       patternTransform="translate(87.044539,284.54847)" />
+    <pattern
+       xlink:href="#pattern4617"
+       id="pattern4619"
+       patternTransform="translate(87.044539,284.52638)" />
+    <pattern
+       xlink:href="#pattern4615"
+       id="pattern4617"
+       patternTransform="translate(87.044539,284.50428)" />
+    <pattern
+       xlink:href="#pattern4613"
+       id="pattern4615"
+       patternTransform="translate(87.066636,284.50428)" />
+    <pattern
+       xlink:href="#pattern4611"
+       id="pattern4613"
+       patternTransform="translate(87.066636,284.48218)" />
+    <pattern
+       xlink:href="#pattern4609"
+       id="pattern4611"
+       patternTransform="translate(87.088733,284.48218)" />
+    <pattern
+       xlink:href="#pattern4607"
+       id="pattern4609"
+       patternTransform="translate(87.088733,284.46009)" />
+    <pattern
+       xlink:href="#pattern4605"
+       id="pattern4607"
+       patternTransform="translate(87.088733,284.39379)" />
+    <pattern
+       xlink:href="#pattern4603"
+       id="pattern4605"
+       patternTransform="translate(87.088733,284.3717)" />
+    <pattern
+       xlink:href="#pattern4601"
+       id="pattern4603"
+       patternTransform="translate(87.088733,284.3496)" />
+    <pattern
+       xlink:href="#pattern4599"
+       id="pattern4601"
+       patternTransform="translate(87.088733,284.3275)" />
+    <pattern
+       xlink:href="#pattern4597"
+       id="pattern4599"
+       patternTransform="translate(87.088733,284.30541)" />
+    <pattern
+       xlink:href="#pattern4595"
+       id="pattern4597"
+       patternTransform="translate(87.088733,284.28331)" />
+    <pattern
+       xlink:href="#pattern4593"
+       id="pattern4595"
+       patternTransform="translate(87.088733,284.26121)" />
+    <pattern
+       xlink:href="#pattern4591"
+       id="pattern4593"
+       patternTransform="translate(87.088733,284.23911)" />
+    <pattern
+       xlink:href="#pattern4589"
+       id="pattern4591"
+       patternTransform="translate(87.088733,284.21702)" />
+    <pattern
+       xlink:href="#pattern4587"
+       id="pattern4589"
+       patternTransform="translate(87.088733,284.19492)" />
+    <pattern
+       xlink:href="#pattern4585"
+       id="pattern4587"
+       patternTransform="translate(87.11083,284.17282)" />
+    <pattern
+       xlink:href="#pattern4583"
+       id="pattern4585"
+       patternTransform="translate(87.132927,284.17282)" />
+    <pattern
+       xlink:href="#pattern4581"
+       id="pattern4583"
+       patternTransform="translate(87.155024,284.17282)" />
+    <pattern
+       xlink:href="#pattern4579"
+       id="pattern4581"
+       patternTransform="translate(87.177121,284.17282)" />
+    <pattern
+       xlink:href="#pattern4577"
+       id="pattern4579"
+       patternTransform="translate(87.177121,284.15073)" />
+    <pattern
+       xlink:href="#pattern4575"
+       id="pattern4577"
+       patternTransform="translate(87.199218,284.15073)" />
+    <pattern
+       xlink:href="#pattern4573"
+       id="pattern4575"
+       patternTransform="translate(87.221315,284.15073)" />
+    <pattern
+       xlink:href="#pattern4571"
+       id="pattern4573"
+       patternTransform="translate(87.243412,284.17282)" />
+    <pattern
+       xlink:href="#pattern4569"
+       id="pattern4571"
+       patternTransform="translate(87.26551,284.21702)" />
+    <pattern
+       xlink:href="#pattern4567"
+       id="pattern4569"
+       patternTransform="translate(87.375995,284.28331)" />
+    <pattern
+       xlink:href="#pattern4565"
+       id="pattern4567"
+       patternTransform="translate(87.420189,284.28331)" />
+    <pattern
+       xlink:href="#pattern4563"
+       id="pattern4565"
+       patternTransform="translate(87.552772,284.3496)" />
+    <pattern
+       xlink:href="#pattern4561"
+       id="pattern4563"
+       patternTransform="translate(87.64116,284.3496)" />
+    <pattern
+       xlink:href="#pattern4559"
+       id="pattern4561"
+       patternTransform="translate(87.89116,284.5996)" />
+    <pattern
+       xlink:href="#pattern4557"
+       id="pattern4559"
+       patternTransform="translate(87.89116,285.0996)" />
+    <pattern
+       xlink:href="#pattern4555"
+       id="pattern4557"
+       patternTransform="translate(87.89116,285.3496)" />
+    <pattern
+       xlink:href="#pattern4553"
+       id="pattern4555"
+       patternTransform="translate(87.89116,285.5996)" />
+    <pattern
+       xlink:href="#pattern4551"
+       id="pattern4553"
+       patternTransform="translate(88.14116,285.8496)" />
+    <pattern
+       xlink:href="#pattern4549"
+       id="pattern4551"
+       patternTransform="translate(88.39116,286.0996)" />
+    <pattern
+       xlink:href="#pattern4547"
+       id="pattern4549"
+       patternTransform="translate(88.64116,286.3496)" />
+    <pattern
+       xlink:href="#pattern4545"
+       id="pattern4547"
+       patternTransform="translate(88.64116,286.8496)" />
+    <pattern
+       xlink:href="#pattern4543"
+       id="pattern4545"
+       patternTransform="translate(89.39116,287.3496)" />
+    <pattern
+       xlink:href="#pattern4541"
+       id="pattern4543"
+       patternTransform="translate(89.89116,287.8496)" />
+    <pattern
+       xlink:href="#pattern4539"
+       id="pattern4541"
+       patternTransform="translate(90.14116,288.0996)" />
+    <pattern
+       xlink:href="#pattern4537"
+       id="pattern4539"
+       patternTransform="translate(90.14116,288.3496)" />
+    <pattern
+       xlink:href="#pattern4535"
+       id="pattern4537"
+       patternTransform="translate(90.39116,288.8496)" />
+    <pattern
+       xlink:href="#pattern4533"
+       id="pattern4535"
+       patternTransform="translate(90.64116,289.0996)" />
+    <pattern
+       xlink:href="#pattern4531"
+       id="pattern4533"
+       patternTransform="translate(90.89116,289.0996)" />
+    <pattern
+       xlink:href="#pattern4529"
+       id="pattern4531"
+       patternTransform="translate(90.89116,289.3496)" />
+    <pattern
+       xlink:href="#pattern4527"
+       id="pattern4529"
+       patternTransform="translate(91.39116,290.0996)" />
+    <pattern
+       xlink:href="#pattern4525"
+       id="pattern4527"
+       patternTransform="translate(91.89116,291.8496)" />
+    <pattern
+       xlink:href="#pattern4523"
+       id="pattern4525"
+       patternTransform="translate(92.64116,292.8496)" />
+    <pattern
+       xlink:href="#pattern4521"
+       id="pattern4523"
+       patternTransform="translate(92.64116,293.0996)" />
+    <pattern
+       xlink:href="#pattern4519"
+       id="pattern4521"
+       patternTransform="translate(92.64116,293.8496)" />
+    <pattern
+       xlink:href="#pattern4517"
+       id="pattern4519"
+       patternTransform="translate(92.64116,294.3496)" />
+    <pattern
+       xlink:href="#pattern4515"
+       id="pattern4517"
+       patternTransform="translate(92.64116,295.3496)" />
+    <pattern
+       xlink:href="#pattern4513"
+       id="pattern4515"
+       patternTransform="translate(92.64116,296.0996)" />
+    <pattern
+       xlink:href="#pattern4511"
+       id="pattern4513"
+       patternTransform="translate(92.64116,296.5996)" />
+    <pattern
+       xlink:href="#pattern4509"
+       id="pattern4511"
+       patternTransform="translate(92.64116,296.8496)" />
+    <pattern
+       xlink:href="#pattern4507"
+       id="pattern4509"
+       patternTransform="translate(92.64116,297.0996)" />
+    <pattern
+       xlink:href="#pattern4505"
+       id="pattern4507"
+       patternTransform="translate(92.64116,297.3496)" />
+    <pattern
+       xlink:href="#pattern4503"
+       id="pattern4505"
+       patternTransform="translate(92.64116,298.8496)" />
+    <pattern
+       xlink:href="#pattern4501"
+       id="pattern4503"
+       patternTransform="translate(92.64116,300.0996)" />
+    <pattern
+       xlink:href="#pattern4499"
+       id="pattern4501"
+       patternTransform="translate(92.64116,300.5996)" />
+    <pattern
+       xlink:href="#pattern4497"
+       id="pattern4499"
+       patternTransform="translate(92.64116,301.0996)" />
+    <pattern
+       xlink:href="#pattern4495"
+       id="pattern4497"
+       patternTransform="translate(92.39116,302.3496)" />
+    <pattern
+       xlink:href="#pattern4493"
+       id="pattern4495"
+       patternTransform="translate(92.14116,302.5996)" />
+    <pattern
+       xlink:href="#pattern4491"
+       id="pattern4493"
+       patternTransform="translate(91.64116,304.0996)" />
+    <pattern
+       xlink:href="#pattern4489"
+       id="pattern4491"
+       patternTransform="translate(91.39116,304.3496)" />
+    <pattern
+       xlink:href="#pattern4487"
+       id="pattern4489"
+       patternTransform="translate(90.89116,306.0996)" />
+    <pattern
+       xlink:href="#pattern4485"
+       id="pattern4487"
+       patternTransform="translate(89.64116,308.5996)" />
+    <pattern
+       xlink:href="#pattern4483"
+       id="pattern4485"
+       patternTransform="translate(89.64116,309.0996)" />
+    <pattern
+       xlink:href="#pattern4481"
+       id="pattern4483"
+       patternTransform="translate(89.64116,309.5996)" />
+    <pattern
+       xlink:href="#pattern4479"
+       id="pattern4481"
+       patternTransform="translate(89.64116,309.8496)" />
+    <pattern
+       xlink:href="#pattern4477"
+       id="pattern4479"
+       patternTransform="translate(90.14116,310.0996)" />
+    <pattern
+       xlink:href="#pattern4475"
+       id="pattern4477"
+       patternTransform="translate(90.64116,310.3496)" />
+    <pattern
+       xlink:href="#pattern4473"
+       id="pattern4475"
+       patternTransform="translate(91.39116,310.8496)" />
+    <pattern
+       xlink:href="#pattern4471"
+       id="pattern4473"
+       patternTransform="translate(95.64116,313.0996)" />
+    <pattern
+       xlink:href="#pattern4469"
+       id="pattern4471"
+       patternTransform="translate(105.89116,316.3496)" />
+    <pattern
+       xlink:href="#pattern4467"
+       id="pattern4469"
+       patternTransform="translate(109.14116,317.3496)" />
+    <pattern
+       xlink:href="#pattern4465"
+       id="pattern4467"
+       patternTransform="translate(129.39116,324.0996)" />
+    <pattern
+       xlink:href="#pattern4463"
+       id="pattern4465"
+       patternTransform="translate(131.14116,324.5996)" />
+    <pattern
+       xlink:href="#pattern4434"
+       id="pattern4463"
+       patternTransform="translate(133.14116,325.3496)" />
+    <pattern
+       xlink:href="#pattern4375"
+       id="pattern4434"
+       patternTransform="translate(134.14116,325.3496)" />
+    <pattern
+       xlink:href="#pattern4363"
+       id="pattern4375"
+       patternTransform="translate(134.2595,327.18682)" />
+    <pattern
+       xlink:href="#pattern4341"
+       id="pattern4363"
+       patternTransform="translate(101.92548,307.39343)" />
+    <pattern
+       xlink:href="#pattern4130"
+       id="pattern4341"
+       patternTransform="translate(101.92548,305.55621)" />
+    <linearGradient
+       id="linearGradient3361">
+      <stop
+         id="stop3363"
+         style="stop-color:#0d1883;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3365"
+         style="stop-color:#5d6bef;stop-opacity:1"
+         offset="0.597561" />
+      <stop
+         id="stop3367"
+         style="stop-color:#0e1a8f;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3247">
+      <stop
+         id="stop3249"
+         style="stop-color:#bfbfbf;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3255"
+         style="stop-color:#ededed;stop-opacity:1"
+         offset="0.597561" />
+      <stop
+         id="stop3251"
+         style="stop-color:#c1c1c1;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3195">
+      <stop
+         id="stop3197"
+         style="stop-color:#0e0e0e;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3205"
+         style="stop-color:#3e3e3e;stop-opacity:1"
+         offset="0.62195122" />
+      <stop
+         id="stop3199"
+         style="stop-color:#161616;stop-opacity:1"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="85.699181"
+       y1="355.77878"
+       x2="92.550148"
+       y2="355.77878"
+       id="linearGradient3203"
+       xlink:href="#linearGradient3195"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="85.699181"
+       y1="355.77878"
+       x2="92.550148"
+       y2="355.77878"
+       id="linearGradient3213"
+       xlink:href="#linearGradient3195"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="85.699181"
+       y1="355.77878"
+       x2="92.550148"
+       y2="355.77878"
+       id="linearGradient3215"
+       xlink:href="#linearGradient3195"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="85.699181"
+       y1="355.77878"
+       x2="92.550148"
+       y2="355.77878"
+       id="linearGradient3217"
+       xlink:href="#linearGradient3195"
+       gradientUnits="userSpaceOnUse" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="2.25383"
+       height="4.50383"
+       patternTransform="translate(101.80714,305.55621)"
+       id="pattern4130">
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="rect3371"
+         d="M 0,-5.6843419e-14 L 0,1.12677 L 1.12677,1.12677 L 1.12677,-5.6843419e-14 L 0,-5.6843419e-14 z"
+         style="opacity:1;fill:#aa0000;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 1.12706,-5.6843419e-14 L 1.12706,1.12677 L 2.25383,1.12677 L 2.25383,-5.6843419e-14 L 1.12706,-5.6843419e-14 z"
+         id="path3379"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#aa0000;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 2.25383,1.12706 L 2.25383,2.25383 L 1.12706,2.25383 L 1.12706,1.12706 L 2.25383,1.12706 z"
+         id="use3381"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="use3383"
+         d="M 1.12677,1.12706 L 1.12677,2.25383 L 0,2.25383 L 0,1.12706 L 1.12677,1.12706 z"
+         style="fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="opacity:1;fill:#aa0000;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 0,2.24992 L 0,3.37669 L 1.12677,3.37669 L 1.12677,2.24992 L 0,2.24992 z"
+         id="path3385"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="path3387"
+         d="M 1.12706,2.24992 L 1.12706,3.37669 L 2.25383,3.37669 L 2.25383,2.24992 L 1.12706,2.24992 z"
+         style="opacity:1;fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#aa0000;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 2.25383,3.37706 L 2.25383,4.50383 L 1.12706,4.50383 L 1.12706,3.37706 L 2.25383,3.37706 z"
+         id="use3389"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         id="use3391"
+         d="M 1.12677,3.37706 L 1.12677,4.50383 L 0,4.50383 L 0,3.37706 L 1.12677,3.37706 z"
+         style="fill:#ececec;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </pattern>
+    <linearGradient
+       x1="44.947655"
+       y1="342.48718"
+       x2="58.28672"
+       y2="342.48718"
+       id="linearGradient4411"
+       xlink:href="#linearGradient3361"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5534371,0,0,1,-10.835613,9.3790744)" />
+    <linearGradient
+       x1="44.947655"
+       y1="342.48718"
+       x2="58.28672"
+       y2="342.48718"
+       id="linearGradient4418"
+       xlink:href="#linearGradient3361"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(35.479308,-1.9334254)" />
+    <linearGradient
+       x1="80.448547"
+       y1="305.96432"
+       x2="93.981941"
+       y2="305.96432"
+       id="linearGradient4437"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.1183432,-1.8372246)" />
+    <linearGradient
+       x1="56.968681"
+       y1="61.94128"
+       x2="81.917511"
+       y2="61.94128"
+       id="linearGradient4440"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.1183432,-1.8372246)" />
+    <linearGradient
+       x1="60.968681"
+       y1="115.88587"
+       x2="77.917511"
+       y2="115.88587"
+       id="linearGradient4443"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.1183432,-1.8372246)" />
+    <linearGradient
+       x1="59.516586"
+       y1="151.88586"
+       x2="79.412437"
+       y2="151.88586"
+       id="linearGradient4446"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.1183432,-1.8372246)" />
+    <linearGradient
+       x1="59.516586"
+       y1="191.88586"
+       x2="79.412437"
+       y2="191.88586"
+       id="linearGradient4449"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.1183432,-1.8372246)" />
+    <linearGradient
+       x1="59.516586"
+       y1="292.47824"
+       x2="79.412437"
+       y2="292.47824"
+       id="linearGradient4453"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-0.1183432,-1.8372246)" />
+    <linearGradient
+       x1="85.699181"
+       y1="355.77878"
+       x2="92.550148"
+       y2="355.77878"
+       id="linearGradient4458"
+       xlink:href="#linearGradient3195"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(7.10603e-2,-1.8372246)" />
+    <linearGradient
+       x1="85.699181"
+       y1="355.77878"
+       x2="92.550148"
+       y2="355.77878"
+       id="linearGradient4460"
+       xlink:href="#linearGradient3195"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(7.10603e-2,-1.8372246)" />
+    <linearGradient
+       x1="37.342236"
+       y1="345.6106"
+       x2="45.462612"
+       y2="345.6106"
+       id="linearGradient3408"
+       xlink:href="#linearGradient3247"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(55.9375,0)" />
+  </defs>
+  <g
+     transform="translate(-32.33402,-19.793394)"
+     id="layer1">
+    <path
+       d="M 93.779736,339.53414 L 100.90011,346.65452 L 100.90011,351.68708 L 93.914082,351.68708"
+       id="path2565"
+       style="opacity:1;fill:url(#linearGradient3408);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <use
+       transform="matrix(-1,0,0,1,138.61735,0)"
+       id="use3376"
+       x="0"
+       y="0"
+       width="73.924896"
+       height="351.11072"
+       xlink:href="#path2565" />
+    <use
+       transform="translate(-4.460597,-136)"
+       id="use4301"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use3225" />
+    <path
+       d="M 87.449257,351.81507 L 86.27024,356.21523 L 92.121212,356.21523 L 90.902757,351.81507"
+       id="path3191"
+       style="fill:url(#linearGradient4458);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient4460);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <use
+       transform="matrix(0.7972609,0,0,1,2.6945002,3.4317892)"
+       id="use3225"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path3191" />
+    <use
+       transform="translate(-8.8004445,0)"
+       id="use3229"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use3225" />
+    <path
+       d="M 62.549846,355.16782 L 59.898245,352.99323 L 59.898245,226.11421 L 78.794091,226.11421 L 78.794091,352.99323 L 77.468291,354.08052 L 76.14249,355.16782 L 62.549846,355.16782 z"
+       id="path2396"
+       style="fill:url(#linearGradient4453);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 59.898245,218.99323 L 59.898245,226.11421 L 78.794091,226.11421 L 78.794091,218.99323 L 59.898245,218.99323 z"
+       id="path3171"
+       style="fill:none;fill-opacity:0.70348834;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 59.898245,218.99323 L 59.898245,161.10406 L 78.794091,161.10406 L 78.794091,218.99323 L 59.898245,218.99323 z"
+       id="path3173"
+       style="fill:url(#linearGradient4449);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 61.393169,138.99323 L 59.898245,161.10406 L 78.794091,161.10406 L 77.299167,138.99323 L 61.393169,138.99323 z"
+       id="path3175"
+       style="fill:url(#linearGradient4446);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 61.393169,138.99323 L 61.350339,89.104055 L 77.278862,89.104055 L 77.299167,138.99323 L 61.393169,138.99323 z"
+       id="path3177"
+       style="fill:url(#linearGradient4443);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 81.299167,78.993225 L 81.278862,51.104055 C 81.278862,47.800484 75.497758,31.104055 69.314601,31.104055 C 63.257606,31.104055 57.350339,48.51323 57.350339,51.104055 L 57.393169,78.993225 L 61.350339,89.104055 L 77.278862,89.104055 L 81.299167,78.993225 z"
+       id="path3179"
+       style="fill:url(#linearGradient4440);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 87.096903,256.56539 C 84.862973,256.56539 80.830208,268.56959 80.830208,271.94989 L 80.830208,351.6888 L 93.363598,351.6888 L 93.363598,271.94989 C 93.363598,268.69881 89.337959,256.56539 87.096903,256.56539 z"
+       id="path3184"
+       style="fill:url(#linearGradient4437);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <rect
+       width="2.1539445"
+       height="59.667309"
+       x="83.694435"
+       y="280.07693"
+       id="rect4140"
+       style="fill:url(#pattern4653);stroke:none" />
+    <use
+       transform="translate(-39.810595,0)"
+       id="use3223"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path3191" />
+    <use
+       transform="matrix(-1,0,0,1,138.59293,0)"
+       id="use3189"
+       style="fill-opacity:1"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path3184" />
+    <g
+       transform="translate(-0.1183432,-1.8372246)"
+       id="g3279">
+      <path
+         d="M 60.29348,221.00664 L 64.166803,227.71543"
+         id="path3267"
+         style="opacity:1;fill:none;fill-opacity:0.70348834;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+      <use
+         transform="translate(4.6666665,0)"
+         id="use3269"
+         x="0"
+         y="0"
+         width="744.09448"
+         height="1052.3622"
+         xlink:href="#path3267" />
+      <use
+         transform="translate(4.6666665,0)"
+         id="use3271"
+         x="0"
+         y="0"
+         width="744.09448"
+         height="1052.3622"
+         xlink:href="#use3269" />
+      <path
+         d="M 74.29348,221.00664 L 78.166803,227.71543"
+         id="use3275"
+         style="fill:none;fill-opacity:0.70348834;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+    <use
+       transform="matrix(1,0,0,-1,0,445.04762)"
+       id="use3285"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#g3279" />
+    <path
+       d="M 57.902294,339.31443 L 59.854628,338.79131 L 59.854628,341.33474 L 57.891023,341.86089"
+       id="path3319"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <use
+       transform="translate(0,-62)"
+       id="use3329"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path3319" />
+    <use
+       transform="matrix(-1,0,0,1,138.69267,62.063135)"
+       id="use3331"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use3329" />
+    <use
+       transform="translate(0,-62)"
+       id="use3333"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use3331" />
+    <path
+       d="M 68.819157,31.64715 L 68.819157,88.605855 L 69.819157,88.605855 L 69.819157,31.64715 C 69.819157,31.64715 69.540022,31.604181 69.319157,31.604181 C 69.102198,31.604181 68.819157,31.64715 68.819157,31.64715 z"
+       id="path3337"
+       style="fill:#9d9d9d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;marker:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <path
+       d="M 92.866032,340.55376 L 81.326969,340.55376"
+       id="path3351"
+       style="fill:none;fill-opacity:0.70348834;fill-rule:nonzero;stroke:url(#linearGradient4418);stroke-width:1.79999995;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <use
+       transform="translate(0,-61.333184)"
+       id="use3369"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path3351" />
+    <use
+       transform="matrix(-1,0,0,1,138.59182,0)"
+       id="use4166"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#rect4140" />
+    <use
+       transform="matrix(-1,0,0,1,138.59182,0)"
+       id="use4168"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path3351" />
+    <use
+       transform="matrix(-1,0,0,1,138.59182,0)"
+       id="use4170"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use3369" />
+    <path
+       d="M 78.295433,351.86626 L 60.397568,351.86626"
+       id="path4174"
+       style="fill:none;fill-opacity:0.70348834;fill-rule:nonzero;stroke:url(#linearGradient4411);stroke-width:1.80000007;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    <use
+       transform="translate(0,-120)"
+       id="use4178"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#path4174" />
+    <use
+       transform="translate(0,-66)"
+       id="use4180"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use4178" />
+    <use
+       transform="matrix(0.8350952,0,0,0.8317298,11.402423,-46.089658)"
+       id="use4182"
+       x="0"
+       y="0"
+       width="744.09448"
+       height="1052.3622"
+       xlink:href="#use4180" />
+    <g
+       transform="translate(0.249265,0)"
+       id="g2556">
+      <use
+         transform="translate(-18,0)"
+         id="use2550"
+         x="0"
+         y="0"
+         width="73.924896"
+         height="351.11072"
+         xlink:href="#path3184" />
+      <use
+         transform="translate(-18,0)"
+         id="use2552"
+         x="0"
+         y="0"
+         width="73.924896"
+         height="351.11072"
+         xlink:href="#path3351" />
+      <use
+         transform="translate(-18,0)"
+         id="use2554"
+         x="0"
+         y="0"
+         width="73.924896"
+         height="351.11072"
+         xlink:href="#use3369" />
+    </g>
+    <use
+       transform="translate(-15.425239,0)"
+       id="use2561"
+       x="0"
+       y="0"
+       width="73.924896"
+       height="351.11072"
+       xlink:href="#rect4140" />
+    <use
+       transform="translate(-19.849558,0)"
+       id="use2563"
+       x="0"
+       y="0"
+       width="73.924896"
+       height="351.11072"
+       xlink:href="#path3191" />
+  </g>
+</svg>

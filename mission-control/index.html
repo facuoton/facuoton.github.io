@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Control — Space Tracker | Programación 2</title>
+  <meta name="description" content="Dashboard interactivo de telemetría y seguimiento aeroespacial en tiempo real conectado a The Space Devs API.">
+  
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  
+  <main id="view-prelogin" class="spa-view active" aria-label="Pantalla de Acceso a Mission Control">
+    
+    
+    <header class="top-agencies-bar" aria-label="Agencias Espaciales Principales">
+      
+      <div class="agency-item" title="SpaceX">
+        <svg class="agency-top-svg agency-spacex" viewBox="0 0 108 26" fill="currentColor">
+          <text x="0" y="20" font-family="'Space Grotesk', -apple-system, sans-serif" font-weight="800" font-size="20" letter-spacing="3.5">SPACEX</text>
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="NASA">
+        <svg class="agency-top-svg agency-nasa" viewBox="0 0 38 32">
+          <circle cx="19" cy="16" r="14" fill="#0b3d91" />
+          <path d="M7 24 L22 10 L31 20" fill="none" stroke="#fc3d21" stroke-width="2.2" stroke-linecap="round" />
+          <text x="6" y="20" font-family="'Space Grotesk', serif" font-weight="900" font-size="11" fill="#ffffff" letter-spacing="1">NASA</text>
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="ESA">
+        <svg class="agency-top-svg agency-esa" viewBox="0 0 45 28">
+          <circle cx="14" cy="14" r="12" fill="#003247" stroke="#00b4d8" stroke-width="1.2" />
+          <text x="7" y="18" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="11" fill="#00b4d8" letter-spacing="0.5">esa</text>
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="JAXA">
+        <svg class="agency-top-svg agency-jaxa" viewBox="0 0 70 26">
+          <path d="M36 6 Q48 10 54 18" fill="none" stroke="#e60012" stroke-width="2" stroke-linecap="round" />
+          <text x="0" y="20" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="19" fill="#0072bc" letter-spacing="2" font-style="italic">JAXA</text>
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="Roscosmos">
+        <svg class="agency-top-svg agency-roscosmos" viewBox="0 0 145 26">
+          <polygon points="4,20 16,6 20,11 10,21" fill="#e52420" />
+          <text x="24" y="19" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="13" fill="#ffffff" letter-spacing="1.5">ROSCOSMOS</text>
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="ISRO">
+        <svg class="agency-top-svg agency-isro" viewBox="0 0 75 26">
+          <polygon points="8,5 15,19 3,19" fill="#ff671f" />
+          <text x="18" y="19" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="14" fill="#ffffff" letter-spacing="1.5">ISRO</text>
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="CNSA">
+        <svg class="agency-top-svg agency-cnsa" viewBox="0 0 40 28">
+          <circle cx="14" cy="14" r="11" fill="none" stroke="#0077b6" stroke-width="1.8" />
+          <polygon points="14,6 19,19 9,19" fill="#0077b6" />
+        </svg>
+      </div>
+      
+      <div class="agency-item" title="UAE Space Agency">
+        <svg class="agency-top-svg agency-uae" viewBox="0 0 90 26">
+          <circle cx="10" cy="13" r="8" fill="none" stroke="#c59b27" stroke-width="1.5" />
+          <text x="22" y="17" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="10" fill="#c59b27" letter-spacing="1">UAE SPACE</text>
+        </svg>
+      </div>
+    </header>
+
+    
+    <div class="prelogin-main-container">
+      
+      
+      <div class="parallax-visual-area">
+        <div class="parallax-container" aria-hidden="true">
+          
+          <div class="parallax-layer parallax-bg" id="parallax-bg-layer"></div>
+          
+          
+          <div class="parallax-frame-accent" id="parallax-frame-layer"></div>
+          
+          
+          <div class="parallax-astronaut-wrap" id="parallax-astro-layer">
+            <img class="parallax-astronaut-img" 
+                 src="assets/depth-3.png" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618042164219-62c820f10723?auto=format&fit=crop&w=1000&q=80';"
+                 alt="Astronauta en el espacio exterior" />
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="prelogin-content-box">
+        
+        
+        <div id="auth-panel-prelogin" class="auth-panel active">
+          <h1 class="landing-title">
+            Mission<br>
+            Control
+          </h1>
+          <div class="landing-subtitle">SPACE TRACKER</div>
+          <button type="button" id="btn-prelogin-enter" class="btn-pill-cyan" aria-label="Ingresar a Mission Control">
+            INGRESAR A MISSION CONTROL
+          </button>
+        </div>
+
+        
+        <form id="login-form-panel" class="auth-panel" novalidate>
+          <h2 class="auth-title">Ingresar a Mission Control</h2>
+          <p class="auth-subtitle">Continuá tu misión con tu cuenta</p>
+          <p class="auth-demo-note" role="note">Modo demo: la autenticación todavía no está conectada a MongoDB.</p>
+
+          <div class="auth-input-group">
+            <label class="auth-input-label" for="login-email">EMAIL</label>
+            <input type="email" id="login-email" class="auth-text-input" placeholder="tu@email.com" value="facundo@missioncontrol.app" autocomplete="email" required />
+          </div>
+
+          <div class="auth-input-group">
+            <label class="auth-input-label" for="login-password">CONTRASEÑA</label>
+            <input type="password" id="login-password" class="auth-text-input" placeholder="••••••••" value="••••••••••" autocomplete="current-password" required />
+          </div>
+
+          <div class="auth-actions-group">
+            <button type="submit" id="btn-submit-login" class="btn-pill-cyan">INGRESAR</button>
+          </div>
+
+          <div class="auth-bottom-switch">
+            ¿No tenés cuenta? <a href="#" id="switch-to-register">Crear cuenta</a>
+          </div>
+        </form>
+
+        
+        <form id="register-form-panel" class="auth-panel" novalidate>
+          <h2 class="auth-title">Crear cuenta</h2>
+          <p class="auth-subtitle">Prepará tu próxima misión</p>
+          <p class="auth-demo-note" role="note">Modo demo: la cuenta se simula localmente mientras integramos MongoDB.</p>
+
+          <div class="auth-input-group">
+            <label class="auth-input-label" for="reg-email">EMAIL</label>
+            <input type="email" id="reg-email" class="auth-text-input" placeholder="tu@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="auth-input-group">
+            <label class="auth-input-label" for="reg-password">CONTRASEÑA</label>
+            <input type="password" id="reg-password" class="auth-text-input" placeholder="••••••••" autocomplete="new-password" required />
+          </div>
+
+          <div class="auth-input-group">
+            <label class="auth-input-label" for="reg-password-confirm">REPETIR CONTRASEÑA</label>
+            <input type="password" id="reg-password-confirm" class="auth-text-input" placeholder="••••••••" autocomplete="new-password" required />
+          </div>
+
+          <div class="auth-actions-group">
+            <button type="submit" id="btn-submit-register" class="btn-pill-cyan">CREAR CUENTA</button>
+          </div>
+
+          <div class="auth-bottom-switch">
+            ¿Ya tenés cuenta? <a href="#" id="switch-to-login">Ingresar</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+
+  
+  <div id="app-shell" class="spa-view">
+    
+    
+    <nav class="app-sidebar" aria-label="Navegación Principal">
+      <div>
+        <div class="sidebar-brand">
+          <div class="brand-logo-wrap">
+            <div class="brand-text">
+              Mission Control
+              <span>SPACE TRACKER</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-nav">
+          <a class="nav-item active" data-section="home" role="button">
+            <span class="nav-num">01</span> INICIO
+          </a>
+          <a class="nav-item" data-section="launches" role="button">
+            <span class="nav-num">02</span> LANZAMIENTOS
+          </a>
+          <a class="nav-item" data-section="vehicles" role="button">
+            <span class="nav-num">03</span> VEHÍCULOS
+          </a>
+          <a class="nav-item" data-section="agencies" role="button">
+            <span class="nav-num">04</span> AGENCIAS
+          </a>
+          <a class="nav-item" data-section="astronauts" role="button">
+            <span class="nav-num">05</span> ASTRONAUTAS
+          </a>
+          <a class="nav-item" data-section="platforms" role="button">
+            <span class="nav-num">06</span> PLATAFORMAS
+          </a>
+          <a class="nav-item" data-section="media" role="button">
+            <span class="nav-num">07</span> MEDIA
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-search-btn">
+          <input type="text" id="global-search-input" placeholder="Buscar lanzamientos..." aria-label="Buscar lanzamientos" style="background:transparent;border:none;color:white;width:100%;outline:none;" />
+        </div>
+        <button id="btn-sidebar-logout" class="sidebar-logout-btn">
+          <span>⏻</span> CERRAR SESIÓN
+        </button>
+      </div>
+    </nav>
+
+    
+    <div class="app-main">
+      
+      
+      <header class="app-header">
+        <div id="header-breadcrumb" class="header-breadcrumb">
+          INICIO
+        </div>
+
+        <div class="header-time-widget">
+          <div class="live-indicator">
+            <div class="pulse-dot"></div> TELEMETRÍA EN VIVO
+          </div>
+          <span id="header-utc-clock">24 SEP 2026 / 01:16:00 UTC</span>
+        </div>
+      </header>
+
+      
+      <div class="app-content-area">
+        
+        
+        <section id="section-home" class="content-section active">
+          <div class="home-hero-container">
+            <div class="home-hero-left">
+              <div class="section-tag">INICIO</div>
+              <h1 class="hero-main-title">
+                Mission<br>
+                <span>Control</span>
+              </h1>
+              <div class="hero-subtitle-caps">
+                EXPLORA EL PRESENTE DEL ESPACIO
+              </div>
+
+              
+              <div class="hero-launch-wrapper">
+                <div class="hero-launch-label">VER LANZAMIENTO</div>
+                <div class="hero-featured-card">
+                  <div class="featured-card-left">
+                    <div class="featured-meta-tag">PRÓXIMO LANZAMIENTO</div>
+                    <h2 id="hero-mission-title" class="featured-mission-name">Cargando próximo lanzamiento…</h2>
+                    <p id="hero-agency-meta" class="featured-agency-tag">CONSULTANDO THE SPACE DEVS</p>
+                  </div>
+
+                  <div class="countdown-box">
+                    <span id="hero-countdown-timer" class="countdown-val">T − --D --H --M</span>
+                  </div>
+
+                  <button id="btn-hero-launch-detail" class="btn-arrow-circle" aria-label="Ver lanzamiento">→</button>
+                </div>
+              </div>
+            </div>
+
+          <div class="home-hero-right">
+            <img id="hero-launch-image"
+                 class="hero-rocket-img is-loading"
+                   src="assets/vehiculos/falcon-9.jpg"
+                   alt="Imagen del próximo lanzamiento"
+                   width="720"
+                   height="900"
+                   decoding="async"
+                   fetchpriority="high" />
+            </div>
+          </div>
+        </section>
+
+        
+        <section id="section-launches" class="content-section">
+          <div class="section-header">
+            <div class="section-tag">LANZAMIENTOS</div>
+            <h2 class="section-title">Lanzamientos</h2>
+            <p class="section-desc">Próximas misiones programadas y cronograma de despegues orbitales.</p>
+          </div>
+
+          
+          <div class="filters-bar">
+            <div class="filter-select-wrap">
+              <select id="filter-agency" class="filter-select-native" tabindex="-1" aria-hidden="true">
+                <option value="todas">Agencia: Todas</option>
+                <option value="SpaceX">SpaceX</option>
+                <option value="NASA">NASA</option>
+                <option value="ESA">ESA</option>
+                <option value="Roscosmos">Roscosmos</option>
+                <option value="Rocket Lab">Rocket Lab</option>
+              </select>
+              <button type="button" id="filter-agency-toggle" class="filter-select" aria-haspopup="listbox" aria-expanded="false">
+                <span>Agencia: Todas</span>
+                <span class="filter-select-chevron" aria-hidden="true">⌄</span>
+              </button>
+              <div id="filter-agency-menu" class="filter-select-menu" role="listbox" aria-label="Filtrar por agencia" hidden>
+                <button type="button" role="option" data-value="todas" aria-selected="true">Agencia: Todas</button>
+                <button type="button" role="option" data-value="SpaceX" aria-selected="false">SpaceX</button>
+                <button type="button" role="option" data-value="NASA" aria-selected="false">NASA</button>
+                <button type="button" role="option" data-value="ESA" aria-selected="false">ESA</button>
+                <button type="button" role="option" data-value="Roscosmos" aria-selected="false">Roscosmos</button>
+                <button type="button" role="option" data-value="Rocket Lab" aria-selected="false">Rocket Lab</button>
+              </div>
+            </div>
+            <button class="btn-ghost" style="padding:8px 18px;font-size:0.85rem;" onclick="resetFilters()">Reestablecer</button>
+          </div>
+
+          
+          <div class="launches-layout">
+            <div id="launches-list-container" class="launches-list">
+              
+            </div>
+
+            
+            <div class="featured-side-panel">
+              <div class="featured-meta-tag">VEHÍCULO DESTACADO</div>
+              <h3 style="color:var(--text-bright);font-size:1.4rem;margin-top:6px;">Space Launch System</h3>
+              <p style="color:var(--text-muted);font-size:0.85rem;">SLS Block 1 · NASA · Arquitectura lunar</p>
+              <img class="featured-side-img" src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=500&q=80" alt="Space Launch System" />
+            </div>
+          </div>
+        </section>
+
+        
+        <section id="section-mission-detail" class="content-section">
+          <button type="button" class="mission-back-button" onclick="window.navigateToSection('launches')" aria-label="Volver a lanzamientos">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 12H5M11 18l-6-6 6-6" />
+            </svg>
+            <span>VOLVER A LANZAMIENTOS</span>
+          </button>
+          <div class="section-header">
+            <div class="section-tag">MISIÓN</div>
+            <h2 id="detail-mission-name" class="section-title">Artemis II</h2>
+            <p id="detail-agency-rocket" class="section-desc">NASA / Orion / SLS</p>
+          </div>
+
+          
+          <div class="hero-featured-card mission-status-card">
+            <div class="mission-status-copy">
+              <div class="featured-meta-tag">ESTADO DEL DESPEGUE</div>
+              <div style="color:var(--green-go);font-weight:700;font-size:1.2rem;margin:4px 0;">🟢 GO FOR LAUNCH</div>
+              <p style="color:var(--text-muted);font-size:0.85rem;">Sistemas nominales y condiciones climáticas favorables.</p>
+            </div>
+            <div class="countdown-box mission-countdown-box">
+              <span class="mission-countdown-label">CUENTA REGRESIVA</span>
+              <span id="detail-countdown-timer" class="countdown-val">T - 04D 12H 36M</span>
+            </div>
+          </div>
+
+          
+          <div class="mission-detail-grid">
+            <div class="detail-card">
+              <div class="detail-card-tag">DATOS DE LANZAMIENTO</div>
+              <p style="font-size:1.1rem;font-weight:600;color:var(--text-bright);" id="detail-launch-date">26 SEP 2026</p>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-top:6px;" id="detail-launch-pad">Kennedy Space Center (LC-39B)</p>
+            </div>
+
+            <div class="detail-card span-2">
+              <div class="detail-card-tag">OBJETIVO DE LA MISIÓN</div>
+              <p id="detail-description" style="color:var(--text-main);font-size:0.95rem;line-height:1.6;">
+                Misión tripulada en órbita alrededor de la Luna, que validará sistemas, operaciones y preparará el camino para futuras misiones de alunizaje.
+              </p>
+            </div>
+
+            <div class="detail-card span-3">
+              <div class="detail-card-tag">TRIPULACIÓN ASIGNADA</div>
+              <div class="crew-avatars-grid">
+                <div class="crew-member-card">
+                  <img class="crew-avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Astronauta" />
+                  <div class="crew-name">Reid Wiseman</div>
+                  <div class="crew-role">Comandante</div>
+                </div>
+                <div class="crew-member-card">
+                  <img class="crew-avatar-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Astronauta" />
+                  <div class="crew-name">Victor Glover</div>
+                  <div class="crew-role">Piloto</div>
+                </div>
+                <div class="crew-member-card">
+                  <img class="crew-avatar-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Astronauta" />
+                  <div class="crew-name">Christina Koch</div>
+                  <div class="crew-role">Especialista</div>
+                </div>
+                <div class="crew-member-card">
+                  <img class="crew-avatar-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Astronauta" />
+                  <div class="crew-name">Jeremy Hansen</div>
+                  <div class="crew-role">Especialista</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-card span-3">
+              <div class="detail-card-tag">VEHÍCULO ESPACIAL</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <h3 id="detail-rocket-name" style="font-size:1.3rem;color:var(--text-bright);">Space Launch System + Orion</h3>
+                  <p id="detail-rocket-family" style="color:var(--text-muted);font-size:0.85rem;">Familia SLS · NASA · Carga Superpesada</p>
+                </div>
+                <button class="btn-ghost btn-technical" onclick="window.navigateToSection('vehicles')">
+                  <span>Ver ficha técnica completa</span>
+                  <svg class="btn-technical-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+        <section id="section-vehicles" class="content-section">
+          <div class="section-header">
+            <div class="section-tag">VEHÍCULOS</div>
+            <h2 class="section-title">Vehículos</h2>
+            <p class="section-desc">Explora cohetes, cápsulas y sistemas de lanzamiento orbital.</p>
+          </div>
+
+          <div class="vehicles-showcase">
+            <div>
+              <div class="section-tag">VEHÍCULO DESTACADO</div>
+              <h3 id="vehicle-feat-name" style="font-size:2.4rem;color:var(--text-bright);margin:6px 0;">Cargando vehículo…</h3>
+              <p id="vehicle-feat-desc" style="color:var(--text-muted);font-size:0.95rem;line-height:1.6;">
+                Consultando la ficha técnica disponible.
+              </p>
+
+              <div class="specs-metrics-grid">
+                <div class="spec-box">
+                  <div id="vehicle-metric-height" class="spec-val">—</div>
+                  <div class="spec-lbl">Altura</div>
+                </div>
+                <div class="spec-box">
+                  <div id="vehicle-metric-diameter" class="spec-val">—</div>
+                  <div class="spec-lbl">Diámetro</div>
+                </div>
+                <div class="spec-box">
+                  <div id="vehicle-metric-thrust" class="spec-val">—</div>
+                  <div class="spec-lbl">Empuje</div>
+                </div>
+                <div class="spec-box">
+                  <div id="vehicle-metric-stages" class="spec-val">—</div>
+                  <div class="spec-lbl">Etapas</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="vehicle-featured-media">
+              <img id="vehicle-feat-image" class="vehicle-featured-img" alt="" hidden />
+              <p id="vehicle-image-empty" class="vehicle-image-empty">Seleccioná un vehículo para ver su imagen.</p>
+              <a id="vehicle-image-credit" class="vehicle-image-credit" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
+            </div>
+          </div>
+
+          <div class="section-tag" style="margin-bottom:12px;">OTROS VEHÍCULOS DISPONIBLES</div>
+          <div id="vehicles-carousel-container" class="vehicles-carousel">
+            
+          </div>
+        </section>
+
+        
+        <section id="section-agencies" class="content-section">
+          <div class="section-header">
+            <div class="section-tag">AGENCIAS</div>
+            <h2 class="section-title">Agencias</h2>
+            <p class="section-desc">Organizaciones gubernamentales y privadas que impulsan la exploración del espacio.</p>
+          </div>
+
+          <div class="cards-grid-split">
+            <div id="agencies-grid-container" class="agencies-grid">
+              
+            </div>
+
+            <div class="featured-side-panel">
+              <div class="section-tag">PERFIL DE AGENCIA</div>
+              <img id="agency-panel-logo" class="agency-profile-logo" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" alt="Logo de NASA" />
+              <h3 id="agency-panel-title" style="font-size:2rem;color:var(--text-bright);margin:8px 0;">NASA</h3>
+              <p id="agency-panel-desc" style="color:var(--text-muted);font-size:0.9rem;line-height:1.5;">
+                Agencia gubernamental de Estados Unidos responsable del programa espacial civil, investigación aeronáutica y exploración interplanetaria.
+              </p>
+
+              <div class="specs-metrics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:20px;">
+                <div class="spec-box">
+                  <div id="agency-panel-year" class="spec-val">1958</div>
+                  <div class="spec-lbl">Año de Fundación</div>
+                </div>
+                <div class="spec-box">
+                  <div id="agency-panel-launches" class="spec-val">730</div>
+                  <div class="spec-lbl">Misiones Totales</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+        <section id="section-astronauts" class="content-section">
+          <div class="section-header">
+            <div class="section-tag">ASTRONAUTAS</div>
+            <h2 class="section-title">Astronautas</h2>
+            <p class="section-desc">Humanos en el espacio: exploradores, pilotos e ingenieros en misiones activas.</p>
+          </div>
+
+          <div class="cards-grid-split">
+            <div id="astronauts-grid-container" class="astronauts-grid">
+              
+            </div>
+
+            <div class="featured-side-panel astronaut-profile-panel" aria-live="polite">
+              <div class="section-tag">PERFIL SELECCIONADO</div>
+              <div class="astronaut-profile-photo-wrap">
+                <img id="astronaut-panel-image" class="astronaut-profile-photo" alt="" hidden />
+                <span id="astronaut-panel-image-placeholder" class="astronaut-profile-photo-placeholder" aria-hidden="true">C</span>
+              </div>
+              <h3 id="astronaut-panel-name" style="font-size:1.8rem;color:var(--text-bright);margin:6px 0;">Christina Koch</h3>
+              <p id="astronaut-panel-agency" style="color:var(--cyan-primary);font-size:0.85rem;font-family:var(--font-mono);margin-bottom:12px;">NASA / ESTADOS UNIDOS</p>
+              <p id="astronaut-panel-bio" style="color:var(--text-muted);font-size:0.88rem;line-height:1.5;">
+                Ingeniera y astronauta de la NASA. Participó en misiones de larga duración en la ISS y es tripulante de la misión Artemis II a la Luna.
+              </p>
+
+              <div class="specs-metrics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:20px;">
+                <div class="spec-box">
+                  <div id="astronaut-panel-days" class="spec-val">328</div>
+                  <div class="spec-lbl">Días en el Espacio</div>
+                </div>
+                <div class="spec-box">
+                  <div id="astronaut-panel-spacewalks" class="spec-val">6</div>
+                  <div class="spec-lbl">Caminatas EVA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+        <section id="section-platforms" class="content-section">
+          <div class="section-header">
+            <div class="section-tag">PLATAFORMAS</div>
+            <h2 class="section-title">Plataformas y Estaciones</h2>
+            <p class="section-desc">Complejos de lanzamiento, estaciones orbitales y observatorios espaciales.</p>
+          </div>
+
+          <div id="platforms-grid-container" class="platforms-grid" aria-live="polite"></div>
+        </section>
+
+        
+        <section id="section-media" class="content-section">
+          <div class="section-header media-section-header">
+            <div>
+              <div class="section-tag">MEDIA · FOTOGRAFÍAS · THE SPACE DEVS</div>
+              <h2 class="section-title">Archivo Fotográfico</h2>
+              <p class="section-desc">Fotografías oficiales vinculadas a lanzamientos registrados en la API.</p>
+            </div>
+
+            <div class="media-summary" aria-label="Resumen de la galería">
+              <strong id="media-results-count">—</strong>
+              <span>FOTOGRAFÍAS DISPONIBLES</span>
+            </div>
+          </div>
+
+          <div class="media-toolbar media-toolbar--photos">
+            <p class="media-api-note"><span class="media-api-dot" aria-hidden="true"></span>Datos servidos por Launch Library 2</p>
+          </div>
+
+          <div id="media-grid-container" class="media-grid media-grid--dynamic" aria-live="polite"></div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  
+  <dialog id="media-lightbox" class="media-lightbox" aria-labelledby="media-lightbox-title">
+    <div class="media-lightbox-panel">
+      <button type="button" id="media-lightbox-close" class="media-lightbox-close" aria-label="Cerrar imagen ampliada">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <figure class="media-lightbox-figure">
+        <div class="media-lightbox-image-wrap">
+          <img id="media-lightbox-image" class="media-lightbox-image" alt="" />
+        </div>
+        <figcaption class="media-lightbox-caption">
+          <div>
+            <p id="media-lightbox-meta" class="media-lightbox-meta"></p>
+            <h3 id="media-lightbox-title" class="media-lightbox-title"></h3>
+          </div>
+          <p id="media-lightbox-credit" class="media-lightbox-credit"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </dialog>
+
+  
+  <aside id="toast-box" class="toast-box" role="status" aria-live="polite">
+    <span class="pulse-dot"></span>
+    <span id="toast-message">Mensaje de sistema</span>
+  </aside>
+
+  
+  <script src="js/countdown.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
