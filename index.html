@@ -493,17 +493,18 @@
     }
 
     function animatePreview() {
-      currentX = springLerp(currentX, targetX, 0.15);
-      currentY = springLerp(currentY, targetY, 0.15);
-      currentRotate = springLerp(currentRotate, targetRotate, 0.1);
+      currentX = springLerp(currentX, targetX, 0.24);
+      currentY = springLerp(currentY, targetY, 0.24);
+      currentRotate = springLerp(currentRotate, targetRotate, 0.18);
 
       preview.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${currentRotate}deg)`;
 
-      // Decay rotation toward 0
-      targetRotate *= 0.92;
+      targetRotate *= 0.84;
 
-      if (previewVisible || Math.abs(currentX - targetX) > 0.1) {
+      if (previewVisible || Math.abs(currentX - targetX) > 0.2 || Math.abs(currentY - targetY) > 0.2) {
         animFrame = requestAnimationFrame(animatePreview);
+      } else {
+        animFrame = null;
       }
     }
 
@@ -521,10 +522,6 @@
       targetRotate = 0;
       preview.style.opacity = '0';
       preview.style.visibility = 'hidden';
-      if (animFrame) {
-        cancelAnimationFrame(animFrame);
-        animFrame = null;
-      }
     });
 
     logo.addEventListener('mousemove', (e) => {
@@ -542,7 +539,7 @@
       // Tilt based on horizontal movement
       if (prevMouseX !== null) {
         const deltaX = e.clientX - prevMouseX;
-        targetRotate = Math.max(-15, Math.min(15, deltaX * 1.5));
+        targetRotate = Math.max(-8, Math.min(8, deltaX * 0.7));
       }
       prevMouseX = e.clientX;
     });
