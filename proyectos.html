@@ -33,76 +33,77 @@
     <div class="container">
       <a href="./" class="logo">FACUNDO OTÓN</a>
       <nav class="main-nav">
-        <a href="./#portfolio">Work</a>
-        <a href="./#about">About</a>
-        <a href="./#contact">Contact</a>
+        <a href="./#portfolio" data-lang-key="navWork">Work</a>
+        <a href="./#about" data-lang-key="navAbout">About</a>
+        <a href="./#contact" data-lang-key="navContact">Contact</a>
+        <button type="button" class="language-switch" id="language-toggle" aria-label="Cambiar idioma" aria-pressed="false">
+          <span class="language-switch-label">ES</span>
+          <span class="language-switch-track" aria-hidden="true"><span class="language-switch-thumb"></span></span>
+          <span class="language-switch-label">EN</span>
+        </button>
       </nav>
     </div>
   </header>
 
   <main class="gallery-page-main">
     <section class="container portfolio-section">
-      <a href="./#portfolio" class="btn-more btn-back"><i class="ri-arrow-left-line"></i> Volver al inicio</a>
+      <a href="./#portfolio" class="btn-more btn-back"><i class="ri-arrow-left-line"></i> <span data-lang-key="backHome">Volver al inicio</span></a>
 
       <div class="section-header">
-        <h3 class="section-title">Todos los Proyectos</h3>
-        <p>Los destacados y todo lo demás. La colección completa.</p>
+        <h3 class="section-title" data-lang-key="allProjects">Todos los Proyectos</h3>
+        <p data-lang-key="allProjectsDescription">Los destacados y todo lo demás. La colección completa.</p>
       </div>
 
       <div class="grid">
         <!-- Mission Control -->
         <article class="card">
-          <a href="./mission-control/" class="project-link" aria-label="Entrar a Mission Control">
-            <img src="./mission-control-thumb.png" alt="Mission Control — dashboard de seguimiento espacial">
+          <a href="./mission-control/" class="project-link" data-lang-aria="enterMissionControl">
+            <img src="./mission-control-thumb.png" data-lang-alt="missionControlAlt" alt="Mission Control — dashboard de seguimiento espacial">
             <div class="card-overlay card-overlay-rich">
               <h4 class="card-title">Mission Control</h4>
-              <span class="card-category">Web App / Space Tracker / JavaScript</span>
-              <p class="card-description">Dashboard interactivo para explorar lanzamientos, vehículos, agencias,
-                astronautas y plataformas espaciales conectado a datos de The Space Devs.</p>
-              <span class="card-cta">Explorar Mission Control</span>
+              <span class="card-category" data-lang-key="missionControlCategory">Web App / Space Tracker / JavaScript</span>
+              <p class="card-description" data-lang-key="missionControlDescription">Dashboard interactivo para explorar lanzamientos, vehículos, agencias, astronautas y plataformas espaciales conectado a datos de The Space Devs.</p>
+              <span class="card-cta" data-lang-key="exploreMissionControl">Explorar Mission Control</span>
             </div>
           </a>
         </article>
 
         <!-- QuestOS -->
         <article class="card">
-          <a href="./questos/" class="project-link" aria-label="Entrar a QuestOS">
+          <a href="./questos/" class="project-link" data-lang-aria="enterQuestOS">
             <img src="./questos-thumb.png" alt="QuestOS — RPG de productividad con héroes pixel art">
             <div class="card-overlay card-overlay-rich">
               <h4 class="card-title">QuestOS</h4>
-              <span class="card-category">Web App / RPG de Productividad / React + Node + IA</span>
-              <p class="card-description">Un RPG de fantasía oscura que gamifica la vida real: héroes pixel art,
-                quests diarias, boss fights y un Quest Master con IA que convierte metas reales en batallas épicas.</p>
-              <span class="card-cta">Entrar al Calabozo</span>
+              <span class="card-category" data-lang-key="questOSCategory">Web App / RPG de Productividad / React + Node + IA</span>
+              <p class="card-description" data-lang-key="questOSDescription">Un RPG de fantasía oscura que gamifica la vida real: héroes pixel art, quests diarias, boss fights y un Quest Master con IA que convierte metas reales en batallas épicas.</p>
+              <span class="card-cta" data-lang-key="enterDungeon">Entrar al Calabozo</span>
             </div>
           </a>
         </article>
 
         <!-- Botón Rojo -->
         <article class="card">
-          <a href="./botonrojo/" class="project-link" aria-label="Presionar el Botón Rojo">
+          <a href="./botonrojo/" class="project-link" data-lang-aria="pressRedButton">
             <img src="./botonrojo-thumb.png" alt="Botón Rojo — juego de mesa">
             <div class="card-overlay card-overlay-rich">
               <h4 class="card-title">Botón Rojo</h4>
-              <span class="card-category">Web App / Juego de Mesa / React</span>
-              <p class="card-description">El botón de lanzamiento nuclear del juego de mesa Botón Rojo: 30 segundos
-                de cuenta regresiva, alarmas y explosión final.</p>
-              <span class="card-cta">Presionar el Botón</span>
+              <span class="card-category" data-lang-key="redButtonCategory">Web App / Juego de Mesa / React</span>
+              <p class="card-description" data-lang-key="redButtonDescription">El botón de lanzamiento nuclear del juego de mesa Botón Rojo: 30 segundos de cuenta regresiva, alarmas y explosión final.</p>
+              <span class="card-cta" data-lang-key="pressButton">Presionar el Botón</span>
             </div>
           </a>
         </article>
 
         <!-- SizeMatters.AI -->
         <article class="card">
-          <a href="./sizematters-ai/" class="project-link" aria-label="Abrir SizeMatters.AI">
+          <a href="./sizematters-ai/" class="project-link" data-lang-aria="openSizeMatters">
             <img class="sizematters-project-thumb" src="./sizematters-ai/IMG_assets/Logo%20Completo.png"
               alt="SizeMatters.AI app logo">
             <div class="card-overlay card-overlay-rich">
               <h4 class="card-title">SizeMatters.AI</h4>
-              <span class="card-category">Web App / Diseño UI / Herramienta de Producción / JavaScript</span>
-              <p class="card-description">Una herramienta visual de inteligencia para producción que permite estimar
-                almacenamiento, rotación de tarjetas, tiempos de descarga, informes técnicos y riesgos antes de un rodaje.</p>
-              <span class="card-cta">Abrir herramienta</span>
+              <span class="card-category" data-lang-key="sizeMattersCategory">Web App / Diseño UI / Herramienta de Producción / JavaScript</span>
+              <p class="card-description" data-lang-key="sizeMattersDescription">Una herramienta visual de inteligencia para producción que permite estimar almacenamiento, rotación de tarjetas, tiempos de descarga, informes técnicos y riesgos antes de un rodaje.</p>
+              <span class="card-cta" data-lang-key="openTool">Abrir herramienta</span>
             </div>
           </a>
         </article>
@@ -200,6 +201,8 @@
       <p class="copyright">© 2026 Facundo Otón. All rights reserved.</p>
     </div>
   </footer>
+
+  <script src="language.js"></script>
 
   <!-- Modal -->
   <div id="modal" class="modal" aria-hidden="true">

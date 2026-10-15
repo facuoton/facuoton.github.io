@@ -45,9 +45,14 @@
     <div class="container">
       <a href="." class="logo">FACUNDO OTÓN</a>
       <nav class="main-nav">
-        <a href="#portfolio">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#portfolio" data-lang-key="navWork">Work</a>
+        <a href="#about" data-lang-key="navAbout">About</a>
+        <a href="#contact" data-lang-key="navContact">Contact</a>
+        <button type="button" class="language-switch" id="language-toggle" aria-label="Cambiar idioma" aria-pressed="false">
+          <span class="language-switch-label">ES</span>
+          <span class="language-switch-track" aria-hidden="true"><span class="language-switch-thumb"></span></span>
+          <span class="language-switch-label">EN</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -121,10 +126,8 @@
               <h2 id="text2" class="gooey-text"></h2>
             </div>
           </div>
-          <p class="hero-desc">Diseño multimedia y web, dirección de arte, fotografía y video. Creando narrativas
-            visuales que
-            impactan.</p>
-          <a href="#portfolio" class="hero-cta">Ver Trabajos</a>
+          <p class="hero-desc" data-lang-key="heroDescription">Diseño multimedia y web, dirección de arte, fotografía y video. Creando narrativas visuales que impactan.</p>
+          <a href="#portfolio" class="hero-cta" data-lang-key="heroCta">Ver Trabajos</a>
         </div>
       </div>
     </section>
@@ -132,22 +135,21 @@
     <!-- Portfolio Grid -->
     <section id="portfolio" class="container portfolio-section">
       <div class="section-header">
-        <h3 class="section-title">Selected Projects</h3>
-        <p>Una colección de mis proyectos recientes.</p>
+        <h3 class="section-title" data-lang-key="selectedProjects">Selected Projects</h3>
+        <p data-lang-key="selectedProjectsDescription">Una colección de mis proyectos recientes.</p>
       </div>
 
       <div class="grid">
         <!-- Item 1 -->
         <article class="card">
-          <a href="./sizematters-ai/" class="project-link" aria-label="Abrir SizeMatters.AI">
+          <a href="./sizematters-ai/" class="project-link" data-lang-aria="openSizeMatters">
             <img class="sizematters-project-thumb" src="./sizematters-ai/IMG_assets/Logo%20Completo.png"
               alt="SizeMatters.AI app logo">
             <div class="card-overlay card-overlay-rich">
               <h4 class="card-title">SizeMatters.AI</h4>
-              <span class="card-category">Web App / Diseño UI / Herramienta de Producción / JavaScript</span>
-              <p class="card-description">Una herramienta visual de inteligencia para producción que permite estimar
-                almacenamiento, rotación de tarjetas, tiempos de descarga, informes técnicos y riesgos antes de un rodaje.</p>
-              <span class="card-cta">Abrir herramienta</span>
+              <span class="card-category" data-lang-key="sizeMattersCategory">Web App / Diseño UI / Herramienta de Producción / JavaScript</span>
+              <p class="card-description" data-lang-key="sizeMattersDescription">Una herramienta visual de inteligencia para producción que permite estimar almacenamiento, rotación de tarjetas, tiempos de descarga, informes técnicos y riesgos antes de un rodaje.</p>
+              <span class="card-cta" data-lang-key="openTool">Abrir herramienta</span>
             </div>
           </a>
         </article>
@@ -217,7 +219,7 @@
       </div>
 
       <div class="more-projects">
-        <a href="./proyectos.html" class="btn-more">Ver más proyectos <i class="ri-arrow-right-line"></i></a>
+        <a href="./proyectos.html" class="btn-more"><span data-lang-key="moreProjects">Ver más proyectos</span> <i class="ri-arrow-right-line"></i></a>
       </div>
     </section>
 
@@ -225,21 +227,19 @@
     <section id="about" class="about-section">
       <div class="container about-content">
         <div class="section-header">
-          <h3 class="section-title">About Me</h3>
+          <h3 class="section-title" data-lang-key="aboutMe">About Me</h3>
         </div>
-        <p class="about-text">Soy un diseñador multimedia apasionado por contar historias a través de la imagen y el
-          movimiento. Busco siempre la excelencia estética y la innovación técnica.</p>
+        <p class="about-text" data-lang-key="aboutDescription">Soy un diseñador multimedia apasionado por contar historias a través de la imagen y el movimiento. Busco siempre la excelencia estética y la innovación técnica.</p>
         <div class="about-text"
           style="display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:1.5rem; gap:8px; margin: 2rem 0;">
-          <strong>Fundador de</strong>
+          <strong data-lang-key="founderOf">Fundador de</strong>
           <a href="https://368bis.com" target="_blank" class="logo-3d-link"
             style="display:flex; justify-content:center; align-items:center; line-height:0; transition: transform 0.2s ease;">
             <div id="logo-3d-container"
               style="width:240px; height:120px; display:flex; justify-content:center; align-items:center;"></div>
           </a>
         </div>
-        <p class="about-text">Especialidades: <strong>Dirección de Arte, Motion Graphics, Video,
-            Fotografía y Diseño Web.</strong></p>
+        <p class="about-text"><span data-lang-key="specialtiesLabel">Especialidades:</span> <strong data-lang-key="specialties">Dirección de Arte, Motion Graphics, Video, Fotografía y Diseño Web.</strong></p>
       </div>
     </section>
 
@@ -247,7 +247,7 @@
     <section id="contact" class="container contact-section">
       <div class="section-header">
         <h3 class="section-title">Let's Create Together</h3>
-        <p>¿Tienes un proyecto en mente?</p>
+        <p data-lang-key="contactPrompt">¿Tienes un proyecto en mente?</p>
       </div>
       <a href="mailto:facuoton@gmail.com" class="contact-link">facuoton@gmail.com</a>
     </section>
@@ -268,6 +268,8 @@
       <p class="copyright">© 2026 Facundo Otón. All rights reserved.</p>
     </div>
   </footer>
+
+  <script src="language.js"></script>
 
   <!-- Modal -->
   <div id="modal" class="modal" aria-hidden="true">
