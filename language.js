@@ -111,6 +111,8 @@
     if (toggle) {
       toggle.setAttribute('aria-pressed', String(currentLanguage === 'en'));
       toggle.dataset.language = currentLanguage;
+      const picker = toggle.closest('.language-picker');
+      if (picker) picker.dataset.language = currentLanguage;
       toggle.setAttribute('aria-label', currentLanguage === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish');
     }
 
