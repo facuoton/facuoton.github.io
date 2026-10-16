@@ -229,11 +229,15 @@ p {
 }
 
 .language-picker {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   height: 44px;
-  margin-left: 3rem;
+  margin-left: 0;
+  transform: translateY(-50%);
 }
 
 .language-code {
@@ -345,7 +349,7 @@ p {
   }
 
   .language-picker {
-    margin-left: 2rem;
+    right: 1.5rem;
   }
 }
 
@@ -921,8 +925,10 @@ p {
   }
 
   .language-picker {
+    position: static;
     gap: 0.25rem;
     margin-left: 0.8rem;
+    transform: none;
   }
 
   .language-switch {
