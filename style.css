@@ -199,6 +199,7 @@ p {
   font-weight: 500;
   color: var(--text-muted);
   position: relative;
+  transform: translateY(5px);
 }
 
 .main-nav a:hover,
@@ -225,7 +226,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  margin-left: 2.8rem;
+  margin-left: 3.4rem;
 }
 
 .language-code {
@@ -235,6 +236,7 @@ p {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-align: center;
+  transform: translateY(5px);
   transition: color 0.25s ease, opacity 0.25s ease;
 }
 
