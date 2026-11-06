@@ -72,40 +72,40 @@
       <div class="hero-bg">
         <div class="hero-slider">
           <div class="slide active">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837285/slider1_knbupx.jpg"
-              alt="Background 1">
+            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837285/slider1_knbupx.jpg"
+              alt="Background 1" decoding="async" fetchpriority="high">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837284/slider2_szus3e.jpg"
-              alt="Background 2">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837284/slider2_szus3e.jpg"
+              alt="Background 2" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837283/slider3_g18ghu.jpg"
-              alt="Background 3">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837283/slider3_g18ghu.jpg"
+              alt="Background 3" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837286/slider4_x5ecqx.jpg"
-              alt="Background 4">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837286/slider4_x5ecqx.jpg"
+              alt="Background 4" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837286/slider5_h9owmb.jpg"
-              alt="Background 5">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837286/slider5_h9owmb.jpg"
+              alt="Background 5" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837286/slider6_pl0uuq.jpg"
-              alt="Background 6">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837286/slider6_pl0uuq.jpg"
+              alt="Background 6" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837286/slider7_luoel4.jpg"
-              alt="Background 7">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837286/slider7_luoel4.jpg"
+              alt="Background 7" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837285/slider8_tkwupb.jpg"
-              alt="Background 8">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837285/slider8_tkwupb.jpg"
+              alt="Background 8" decoding="async">
           </div>
           <div class="slide">
-            <img src="https://res.cloudinary.com/dp4yphsqr/image/upload/v1770837288/slider9_rujbzz.jpg"
-              alt="Background 9">
+            <img data-src="https://res.cloudinary.com/dp4yphsqr/image/upload/c_limit,w_1920/f_auto/q_auto/v1770837288/slider9_rujbzz.jpg"
+              alt="Background 9" decoding="async">
           </div>
         </div>
       </div>
@@ -283,21 +283,62 @@
   </div>
 
   <script>
-    // Hero Background Slider (Crossfade)
+    // Prepare the next image before the crossfade so decoding does not
+    // compete with pointer interactions at the instant the slide changes.
     const slides = document.querySelectorAll('.hero-slider .slide');
     let currentSlide = 0;
+    let nextSlide = slides.length > 1 ? 1 : 0;
+    let slideTimer;
+    let heroVisible = true;
+    let slideSequence = 0;
+    const hero = document.querySelector('.hero');
 
-    function showSlide(idx) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === idx);
+    function prepareSlide(index) {
+      const image = slides[index].querySelector('img');
+      if (image.dataset.src) {
+        image.src = image.dataset.src;
+        delete image.dataset.src;
+      }
+      const loaded = image.complete ? Promise.resolve(image.naturalWidth > 0) : new Promise((resolve) => {
+        image.addEventListener('load', () => resolve(true), { once: true });
+        image.addEventListener('error', () => resolve(false), { once: true });
       });
-      currentSlide = idx;
+      return loaded.then((success) => {
+        if (!success || !image.decode) return success;
+        return image.decode().then(() => true, () => image.naturalWidth > 0);
+      });
     }
 
-    // Auto advance every 5 seconds
-    setInterval(() => {
-      showSlide((currentSlide + 1) % slides.length);
-    }, 5000);
+    function scheduleSlide() {
+      clearTimeout(slideTimer);
+      const sequence = ++slideSequence;
+      if (!heroVisible || document.hidden || slides.length < 2) return;
+      const next = nextSlide;
+      const ready = prepareSlide(next);
+      slideTimer = setTimeout(async () => {
+        const loaded = await ready;
+        if (sequence !== slideSequence || !heroVisible || document.hidden) return;
+        if (loaded) {
+          slides[currentSlide].classList.remove('active');
+          slides[next].classList.add('active');
+          currentSlide = next;
+        }
+        // Skip a failed image without replacing the visible photograph.
+        nextSlide = (next + 1) % slides.length;
+        if (nextSlide === currentSlide) nextSlide = (nextSlide + 1) % slides.length;
+        scheduleSlide();
+      }, 5000);
+    }
+
+    document.addEventListener('visibilitychange', scheduleSlide);
+    if (hero && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        heroVisible = entry.isIntersecting;
+        scheduleSlide();
+      });
+      observer.observe(hero);
+    }
+    scheduleSlide();
 
     // Gallery Data Source
     const galleryData = {

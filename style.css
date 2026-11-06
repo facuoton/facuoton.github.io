@@ -397,14 +397,17 @@ p {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1s ease;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 0s linear 1s;
   transform: scale(1.05);
 }
 
 .hero-slider .slide.active {
   opacity: 1;
+  visibility: visible;
   transform: scale(1);
-  transition: opacity 1s ease, transform 6s ease;
+  transition: opacity 1s ease, transform 6s ease, visibility 0s;
+  will-change: opacity, transform;
 }
 
 .hero-slider img {
