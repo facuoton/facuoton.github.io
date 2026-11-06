@@ -119,7 +119,7 @@
                   <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
                                   0 1 0 0 0
                                   0 0 1 0 0
-                                  0 0 0 255 -140" />
+                                  0 0 0 18 -7" />
                 </filter>
               </defs>
             </svg>
@@ -603,6 +603,9 @@
     let morphTimeRef = new Date();
     let morphValue = 0;
     let cooldownValue = cooldownTime;
+    let morphFrame = null;
+    let morphVisible = true;
+    let cooling = false;
 
     const text1 = document.getElementById('text1');
     const text2 = document.getElementById('text2');
@@ -614,25 +617,25 @@
       function setMorph(fraction) {
         const isMobile = window.innerWidth <= 768;
         if (isMobile) {
-          const blur2 = Math.min(8 / fraction - 8, 20);
+          const blur2 = Math.min(8 / fraction - 8, 8);
           const opacity2 = Math.pow(fraction, 0.4) * 100;
           text2.style.filter = `blur(${blur2}px)`;
           text2.style.webkitFilter = `blur(${blur2}px)`;
           text2.style.opacity = `${opacity2}%`;
 
           let invFraction = 1 - fraction;
-          const blur1 = Math.min(8 / invFraction - 8, 20);
+          const blur1 = Math.min(8 / invFraction - 8, 8);
           const opacity1 = Math.pow(invFraction, 0.4) * 100;
           text1.style.filter = `blur(${blur1}px)`;
           text1.style.webkitFilter = `blur(${blur1}px)`;
           text1.style.opacity = `${opacity1}%`;
         } else {
           // Original Desktop Morph Code
-          text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+          text2.style.filter = `blur(${Math.min(8 / fraction - 8, 8)}px)`;
           text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
           let invFraction = 1 - fraction;
-          text1.style.filter = `blur(${Math.min(8 / invFraction - 8, 100)}px)`;
+          text1.style.filter = `blur(${Math.min(8 / invFraction - 8, 8)}px)`;
           text1.style.opacity = `${Math.pow(invFraction, 0.4) * 100}%`;
         }
       }
@@ -670,7 +673,11 @@
       }
 
       function animateGooey() {
-        requestAnimationFrame(animateGooey);
+        if (document.hidden || !morphVisible) {
+          morphFrame = null;
+          return;
+        }
+        morphFrame = requestAnimationFrame(animateGooey);
         const newTime = new Date();
         const shouldIncrementIndex = cooldownValue > 0;
         const dt = (newTime.getTime() - morphTimeRef.getTime()) / 1000;
@@ -679,18 +686,40 @@
         cooldownValue -= dt;
 
         if (cooldownValue <= 0) {
+          cooling = false;
           if (shouldIncrementIndex) {
             morphTextIndex = (morphTextIndex + 1) % morphTexts.length;
             text1.textContent = morphTexts[morphTextIndex % morphTexts.length];
             text2.textContent = morphTexts[(morphTextIndex + 1) % morphTexts.length];
           }
           doMorph();
-        } else {
+        } else if (!cooling) {
           doCooldown();
+          cooling = true;
         }
       }
 
-      animateGooey();
+      function updateMorphVisibility() {
+        if (document.hidden || !morphVisible) {
+          if (morphFrame !== null) cancelAnimationFrame(morphFrame);
+          morphFrame = null;
+          return;
+        }
+        if (morphFrame === null) {
+          morphTimeRef = new Date();
+          morphFrame = requestAnimationFrame(animateGooey);
+        }
+      }
+
+      document.addEventListener('visibilitychange', updateMorphVisibility);
+      if (hero && 'IntersectionObserver' in window) {
+        const morphObserver = new IntersectionObserver(([entry]) => {
+          morphVisible = entry.isIntersecting;
+          updateMorphVisibility();
+        });
+        morphObserver.observe(hero);
+      }
+      updateMorphVisibility();
     }
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
@@ -776,8 +805,10 @@
       });
 
       const clock = new THREE.Clock();
+      let logoFrame = null;
+      let logoVisible = true;
       function animate() {
-        requestAnimationFrame(animate);
+        logoFrame = requestAnimationFrame(animate);
 
         const delta = clock.getDelta();
         const time = clock.getElapsedTime();
@@ -787,7 +818,27 @@
 
         renderer.render(scene, camera);
       }
-      animate();
+      function updateLogoVisibility() {
+        if (document.hidden || !logoVisible) {
+          if (logoFrame !== null) cancelAnimationFrame(logoFrame);
+          logoFrame = null;
+          clock.stop();
+          return;
+        }
+        if (logoFrame === null) {
+          clock.start();
+          logoFrame = requestAnimationFrame(animate);
+        }
+      }
+      document.addEventListener('visibilitychange', updateLogoVisibility);
+      if ('IntersectionObserver' in window) {
+        const logoObserver = new IntersectionObserver(([entry]) => {
+          logoVisible = entry.isIntersecting;
+          updateLogoVisibility();
+        });
+        logoObserver.observe(container);
+      }
+      updateLogoVisibility();
 
       window.addEventListener('resize', () => {
         camera.aspect = container.clientWidth / container.clientHeight;
