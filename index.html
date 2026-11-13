@@ -113,6 +113,7 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-gooey-container">
+            <button type="button" class="quote-nav quote-prev" aria-label="Frase anterior" data-lang-aria="previousQuote"><span aria-hidden="true">‹</span></button>
             <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true" focusable="false">
               <defs>
                 <filter id="threshold">
@@ -127,6 +128,8 @@
               <h2 id="text1" class="gooey-text"></h2>
               <h2 id="text2" class="gooey-text"></h2>
             </div>
+            <button type="button" class="quote-nav quote-next" aria-label="Frase siguiente" data-lang-aria="nextQuote"><span aria-hidden="true">›</span></button>
+            <span class="quote-counter" aria-live="polite" aria-atomic="true"></span>
           </div>
           <p class="hero-desc" data-lang-key="heroDescription">Diseño multimedia y web, dirección de arte, fotografía y video. Creando narrativas visuales que impactan.</p>
           <a href="#portfolio" class="hero-cta" data-lang-key="heroCta">Ver Trabajos</a>
@@ -590,12 +593,15 @@
     });
 
     // Gooey Text Morphing Effect
-    const morphTexts = [
-      'THE MOST DANGEROUS',
-      'THING IN LIFE',
-      'IS PLAY IT SAFE',
-      '- CASEY NEISTAT'
+    const quotes = [
+      ['THE MOST DANGEROUS', 'THING IN LIFE', 'IS PLAY IT SAFE', '- CASEY NEISTAT'],
+      ['IF YOU TRY,', 'YOU RISK FAILURE.', "IF YOU DON'T TRY,", 'YOU GUARANTEE IT.'],
+      ['DESIGN YOUR ENVIRONMENT', 'TO MAKE SUCCESS AUTOMATIC,', 'BECAUSE SYSTEMS', 'BEAT MOTIVATION EVERY TIME.'],
+      ["PEOPLE WHO SAY IT CAN'T BE DONE", 'SHOULD NOT INTERRUPT', 'THOSE WHO ARE DOING IT.', '- CASEY NEISTAT'],
+      ["IT'S THE EXECUTION THAT MATTERS", 'NEVER THE IDEA', '- CASEY NEISTAT']
     ];
+    let quoteIndex = 0;
+    let morphTexts = quotes[quoteIndex];
     const morphTime = 1.2;
     const cooldownTime = 1.5;
 
@@ -609,10 +615,90 @@
 
     const text1 = document.getElementById('text1');
     const text2 = document.getElementById('text2');
+    const quoteStage = document.querySelector('.gooey-texts');
+    const quoteCounter = document.querySelector('.quote-counter');
+    let counterTimer;
+    let quoteSlideTimer;
+    let quoteSliding = false;
 
     if (text1 && text2) {
+      // Reserve space for the tallest fragment at the current screen width.
+      // Hidden grid items resize naturally when the viewport or fonts change.
+      quotes.flat().forEach((fragment) => {
+        const measure = document.createElement('h2');
+        measure.className = 'gooey-text quote-measure';
+        measure.setAttribute('aria-hidden', 'true');
+        measure.textContent = fragment;
+        quoteStage.appendChild(measure);
+      });
       text1.textContent = morphTexts[morphTextIndex % morphTexts.length];
       text2.textContent = morphTexts[(morphTextIndex + 1) % morphTexts.length];
+
+      function navigateQuote(direction, event, slideDirection = direction) {
+        event.stopPropagation();
+        quoteIndex = (quoteIndex + direction + quotes.length) % quotes.length;
+        morphTexts = quotes[quoteIndex];
+        clearTimeout(quoteSlideTimer);
+        quoteSliding = true;
+        quoteStage.classList.remove('quote-slide-out', 'quote-slide-in');
+        quoteStage.style.setProperty('--quote-out', slideDirection > 0 ? '100vw' : '-100vw');
+        quoteStage.style.setProperty('--quote-in', slideDirection > 0 ? '-100vw' : '100vw');
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function showSelectedQuote() {
+          text1.textContent = morphTexts[morphTexts.length - 1];
+          text2.textContent = morphTexts[0];
+          morphTextIndex = morphTexts.length - 1;
+          morphValue = 0;
+          cooldownValue = cooldownTime;
+          cooling = true;
+          doCooldown();
+          quoteStage.classList.remove('quote-slide-out');
+          if (!reducedMotion) {
+            void quoteStage.offsetWidth;
+            quoteStage.classList.add('quote-slide-in');
+          }
+          quoteSlideTimer = setTimeout(() => {
+            quoteStage.classList.remove('quote-slide-in');
+            quoteSliding = false;
+            morphTimeRef = new Date();
+          }, reducedMotion ? 0 : 400);
+        }
+        if (reducedMotion) {
+          showSelectedQuote();
+        } else {
+          void quoteStage.offsetWidth;
+          quoteStage.classList.add('quote-slide-out');
+          quoteSlideTimer = setTimeout(showSelectedQuote, 320);
+        }
+        quoteCounter.textContent = `${String(quoteIndex + 1).padStart(2, '0')} / ${String(quotes.length).padStart(2, '0')}`;
+        quoteCounter.classList.add('visible');
+        clearTimeout(counterTimer);
+        counterTimer = setTimeout(() => quoteCounter.classList.remove('visible'), 1100);
+      }
+
+      document.querySelector('.quote-prev').addEventListener('click', (event) => navigateQuote(-1, event));
+      document.querySelector('.quote-next').addEventListener('click', (event) => navigateQuote(1, event));
+
+      const quoteContainer = document.querySelector('.hero-gooey-container');
+      let touchStart = null;
+      quoteContainer.addEventListener('touchstart', (event) => {
+        if (event.touches.length !== 1) {
+          touchStart = null;
+          return;
+        }
+        touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      }, { passive: true });
+      quoteContainer.addEventListener('touchend', (event) => {
+        if (!touchStart || event.changedTouches.length !== 1) return;
+        const deltaX = event.changedTouches[0].clientX - touchStart.x;
+        const deltaY = event.changedTouches[0].clientY - touchStart.y;
+        touchStart = null;
+        if (Math.abs(deltaX) < 40 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+        event.preventDefault();
+        navigateQuote(deltaX < 0 ? 1 : -1, event, deltaX < 0 ? -1 : 1);
+      }, { passive: false });
+      quoteContainer.addEventListener('touchcancel', () => { touchStart = null; });
 
       function setMorph(fraction) {
         const isMobile = window.innerWidth <= 768;
@@ -678,6 +764,10 @@
           return;
         }
         morphFrame = requestAnimationFrame(animateGooey);
+        if (quoteSliding) {
+          morphTimeRef = new Date();
+          return;
+        }
         const newTime = new Date();
         const shouldIncrementIndex = cooldownValue > 0;
         const dt = (newTime.getTime() - morphTimeRef.getTime()) / 1000;

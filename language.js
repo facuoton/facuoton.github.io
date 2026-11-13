@@ -66,12 +66,16 @@
 
   const ariaTranslations = {
     es: {
+      previousQuote: 'Frase anterior',
+      nextQuote: 'Frase siguiente',
       openSizeMatters: 'Abrir SizeMatters.AI',
       enterMissionControl: 'Entrar a Mission Control',
       enterQuestOS: 'Entrar a QuestOS',
       pressRedButton: 'Presionar el Botón Rojo'
     },
     en: {
+      previousQuote: 'Previous phrase',
+      nextQuote: 'Next phrase',
       openSizeMatters: 'Open SizeMatters.AI',
       enterMissionControl: 'Enter Mission Control',
       enterQuestOS: 'Enter QuestOS',
